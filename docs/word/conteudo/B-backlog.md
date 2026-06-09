@@ -236,6 +236,7 @@ pessoa vê apenas o que é pertinente à sua função.
 - Deve suportar pelo menos três perfis: **Administrador** (acesso total), **Gestor** (produção, estoque, relatórios, clientes e pedidos) e **Produção** (apenas apontamento de lotes/etapas).
 - Deve registrar data e hora do último acesso de cada usuário.
 - Deve encerrar a sessão automaticamente após período de inatividade e suportar 2FA opcional (alinhado ao RNF007).
+- O logout deve afetar **apenas o dispositivo atual**: sessões abertas em outros aparelhos do mesmo usuário permanecem ativas (escopo de logout local — RN018).
 
 ### HU016 – Alerta de Produção e Agenda de Maturação
 
@@ -270,6 +271,7 @@ sem precisar gerar relatórios, e decido onde agir primeiro.
 - Deve exibir um mini-gráfico de produção dos **últimos 6 meses**.
 - Deve destacar **alertas críticos** (validade ≤ 7 dias e lotes atrasados).
 - Deve permitir alternar o mês de referência.
+- Deve disponibilizar uma **central de notificações** (sino no cabeçalho) que reúne pedidos novos, validades próximas e alertas, com contador de não lidas e marcação individual ou total de leitura (RF047).
 
 ### HU018 – Cadastro e Gestão de Clientes (CRM)
 

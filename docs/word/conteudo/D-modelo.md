@@ -4,7 +4,7 @@ O banco de dados do MantovaniHub foi implementado em PostgreSQL (compatível com
 
 ## 8.1 Visão Geral e Domínios
 
-O modelo é composto por 22 tabelas, 2 visões e 2 funções/gatilhos, organizados em sete domínios funcionais:
+O modelo é composto por **22 tabelas, 2 visões, 2 funções com gatilhos (*triggers*) e 14 tipos enumerados** — que restringem domínios como `status_lote`, `status_pedido`, `tipo_movimento`, `severidade_alerta` e `papel_usuario` diretamente no banco —, organizados em sete domínios funcionais:
 
 | Domínio | Tabelas | Histórias atendidas |
 |---|---|---|

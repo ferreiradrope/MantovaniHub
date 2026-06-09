@@ -1,7 +1,8 @@
 # 5. Requisitos Funcionais (derivados das histórias)
 
 Os requisitos RF001–RF035 derivam das histórias originais; **RF036–RF046** foram adicionados na
-Versão 2.0 (HU015–HU022).
+Versão 2.0 (HU015–HU022); **RF047–RF048** documentam recursos consolidados na implementação
+(central de notificações e upload de fotos).
 
 | ID | Descrição | Origem |
 |:------|:-----------------------------------------------------------------------------------------------------|:----------|
@@ -51,10 +52,13 @@ Versão 2.0 (HU015–HU022).
 | RF044 | Oferecer catálogo com tabela de preços de atacado e disponibilidade para clientes PJ autenticados. | HU020 |
 | RF045 | Disponibilizar página de rastreabilidade de lote por QR Code, com linha do tempo e exportação em PDF. | HU021 |
 | RF046 | Oferecer tela de configurações do negócio (empresa, categorias, alérgenos, alertas, canais), restrita ao Administrador. | HU022 |
+| RF047 | Disponibilizar uma central de notificações no painel que agrega pedidos novos, validades próximas (≤ 7 dias) e alertas, com contador de não lidas e marcação individual/total de leitura. | HU017, HU005, HU019 |
+| RF048 | Permitir o upload da foto do produto, armazenada em *bucket* de objetos (Supabase Storage), com URL pública vinculada ao produto. | HU001, HU006 |
 
 # 6. Regras de Negócio (RN)
 
-As regras RN001–RN013 são do levantamento original; **RN014–RN017** foram adicionadas na Versão 2.0.
+As regras RN001–RN013 são do levantamento original; **RN014–RN017** foram adicionadas na Versão 2.0;
+**RN018** reflete o comportamento de sessão adotado na implementação.
 
 | ID | Descrição | Relacionado a |
 |:------|:------------------------------------------------------------------------------------------------------|:---------------|
@@ -75,6 +79,7 @@ As regras RN001–RN013 são do levantamento original; **RN014–RN017** foram a
 | RN015 | A data-limite para iniciar a produção de um item é calculada como (data-alvo − soma das durações das etapas − margem de segurança), específica por produto. | HU016 |
 | RN016 | Clientes PJ visualizam a tabela de preços de atacado; clientes PF visualizam a tabela de varejo (reforça a RN012). | HU020 |
 | RN017 | A baixa de estoque na confirmação de um pedido segue a regra **FEFO** (*First Expired, First Out*) entre os lotes disponíveis do produto. | HU019, HU007, HU013 |
+| RN018 | O logout encerra apenas a sessão do dispositivo atual (escopo local); as demais sessões do mesmo usuário permanecem ativas até o próprio logout ou a expiração do token. | HU015 |
 
 # 7. Requisitos Não Funcionais (RNF)
 

@@ -66,7 +66,10 @@ export function PainelShell({
 
   async function sair() {
     const supabase = createClient();
-    await supabase.auth.signOut();
+    // `scope: "local"` encerra apenas a sessão DESTE dispositivo. O padrão do
+    // supabase-js é `scope: "global"`, que revoga os refresh tokens de todas as
+    // sessões do usuário — derrubando o admin que estivesse logado em outro aparelho.
+    await supabase.auth.signOut({ scope: "local" });
     router.push("/entrar");
     router.refresh();
   }
