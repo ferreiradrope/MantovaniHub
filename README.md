@@ -107,22 +107,35 @@ Variáveis de ambiente (ver `web/.env.example`):
 O painel administrativo é restrito por autenticação, com perfis de **administrador** e **gestora**.
 As **credenciais de demonstração** podem ser solicitadas à equipe para fins de avaliação.
 
-## 👥 Integrantes
+## 👥 Integrantes (Nome - RA)
 
-> _Preencher (os papéis do Scrum já estão sugeridos a partir do documento de requisitos)._
+1 . Breno Gabriel da Silva - 942523034
 
-| Nome | RA | Papel (Scrum) | GitHub |
-|------|-----|---------------|--------|
-|  |  | Product Owner |  |
-|  |  | Scrum Master |  |
-|  |  | Dev Team |  |
-|  |  | Dev Team |  |
-|  |  | Dev Team |  |
-|  |  | Dev Team |  |
-|  |  | Dev Team |  |
-|  |  | Dev Team |  |
-|  |  | Dev Team |  |
-|  |  | Dev Team |  |
+2 . Bruno Henrique Silva dos Santos - 825166491
+
+3 . Caio Rafael da Encarnação Freitas - 12724239863
+
+4 . Enzo Marinho Machado Vieira - 12625125047
+
+5 . Felipe Barbosa da Silva - 824226505
+
+6 . Gabriel Correia Proença - 823154480
+
+7 . Gabriel Maciel Cavalcante - 82523117
+
+8 . Isaías Gomes Dally Junior - 12725138051
+
+9 . Mariana Albuquerque da Cruz - 942519415
+
+10 . Naegeli Raiane Guerra - 942515910
+
+11 . Pedro Henrique Esgote Santana - 324271342
+
+12 . Pedro Henrique Ferreira da Silva - 1262510629
+
+13 . Tino Marcos Santos da Paz - 12724136840
+
+14 . Vinícius Anselmo - 10722129086
 
 ---
 
