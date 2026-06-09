@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { Package, TrendingDown, Boxes, AlertTriangle, ShoppingBag, ArrowRight } from "lucide-react";
+import { Package, TrendingDown, Boxes, AlertTriangle, ShoppingBag, ArrowRight, Wallet, Truck } from "lucide-react";
 import { getProducaoMensal, getEstoqueAtual, getPedidos, getAlertas } from "@/lib/queries";
 import { StatCard } from "@/components/ui/stat-card";
 import { PageHeader } from "@/components/ui/page-header";
 import { ValidadeBadge } from "@/components/ui/badge";
 import { ProducaoChart } from "@/components/painel/producao-chart";
 import { AlertasCard } from "@/components/painel/alertas-card";
-import { formatKg } from "@/lib/utils";
+import { formatBRL, formatKg } from "@/lib/utils";
 
 const MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
 function mesCurto(iso: string) {
@@ -37,6 +37,11 @@ export default async function PainelHome() {
   const pedidosAbertos = pedidos.filter((p) =>
     ["recebido", "separacao", "pronto"].includes(p.status),
   ).length;
+  const pedidosDoMes = pedidos.filter((p) => (p.criado_em ?? "").slice(0, 7) === mesAtual);
+  const faturamentoMes = pedidosDoMes
+    .filter((p) => p.status !== "cancelado")
+    .reduce((s, p) => s + Number(p.valor_total ?? 0), 0);
+  const pedidosEntregues = pedidosDoMes.filter((p) => p.status === "entregue").length;
 
   const topProdutos = [...doMes]
     .sort((a, b) => Number(b.total_produzido_kg) - Number(a.total_produzido_kg))
@@ -60,12 +65,14 @@ export default async function PainelHome() {
       <PageHeader title="Resumo do mês" subtitle={`Visão geral de ${mesNome}`} />
 
       {/* KPIs */}
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        <StatCard label="Faturamento do mês" value={formatBRL(faturamentoMes)} icon={Wallet} tone="dourado" />
         <StatCard label="Produzido no mês" value={formatKg(produzidoMes)} icon={Package} tone="vinho" />
         <StatCard label="Perda média" value={`${perdaMes.toFixed(1)}%`} icon={TrendingDown} tone="ambar" />
         <StatCard label="Lotes no mês" value={lotesMes} icon={Boxes} tone="oliva" />
         <StatCard label="Validades críticas" value={validadesCriticas} hint="≤ 7 dias" icon={AlertTriangle} tone="tijolo" />
         <StatCard label="Pedidos em aberto" value={pedidosAbertos} icon={ShoppingBag} tone="dourado" />
+        <StatCard label="Pedidos entregues" value={pedidosEntregues} hint="no mês" icon={Truck} tone="oliva" />
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
