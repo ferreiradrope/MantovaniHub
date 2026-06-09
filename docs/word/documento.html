@@ -273,12 +273,14 @@ resposta do WhatsApp.</td>
 </table>
 <h1 id="product-backlog-histórias-de-usuário">4. Product Backlog
 (Histórias de Usuário)</h1>
-<p>O Product Backlog do MantovaniHub reúne <strong>22 Histórias de
+<p>O Product Backlog do MantovaniHub reúne <strong>23 Histórias de
 Usuário (HU)</strong>, superando com folga o requisito mínimo do modelo.
 As histórias HU001–HU014 derivam da 1ª entrevista com o cliente
 (14/04/2026); as histórias <strong>HU015–HU022</strong> foram
 incorporadas na Versão 2.0 a partir do feedback do 2º encontro com o CEO
-Douglas Mantovani.</p>
+Douglas Mantovani. A história <strong>HU023</strong> foi consolidada
+durante a implementação, atendendo à necessidade da gestora de
+acompanhar o faturamento (receita dos pedidos).</p>
 <h3 id="hu001-cadastro-de-produto-ficha-técnica">HU001 – Cadastro de
 Produto (Ficha Técnica)</h3>
 <p><strong>Título:</strong> Cadastro de produto e ficha técnica
@@ -621,9 +623,10 @@ do negócio em segundos, sem precisar gerar relatórios, e decido onde
 agir primeiro.</p>
 <p><strong>Critérios de Aceite:</strong></p>
 <ul>
-<li>A tela inicial deve exibir cartões-resumo do mês corrente: produção
-total (kg), perda média (%), nº de lotes, validades próximas e pedidos
-em aberto.</li>
+<li>A tela inicial deve exibir cartões-resumo do mês corrente:
+<strong>faturamento (R$)</strong>, produção total (kg), perda média (%),
+nº de lotes, validades próximas, pedidos em aberto e <strong>pedidos
+entregues</strong>.</li>
 <li>Deve exibir um ranking dos <strong>produtos mais produzidos</strong>
 no mês (top 5).</li>
 <li>Deve exibir um mini-gráfico de produção dos <strong>últimos 6
@@ -741,13 +744,37 @@ a lista de <strong>alérgenos</strong>.</li>
 <li>Deve restringir essas configurações ao perfil
 <strong>Administrador</strong>.</li>
 </ul>
+<h3 id="hu023-controle-de-faturamento-e-receita">HU023 – Controle de
+Faturamento e Receita</h3>
+<p><strong>Título:</strong> Acompanhamento do faturamento dos pedidos
+<strong>História:</strong> COMO Douglas (proprietário) e a esposa
+(gestora) GOSTARIA DE acompanhar quanto a Mantovani recebeu com os
+pedidos — o faturamento do mês, quantos pedidos foram feitos/entregues e
+a evolução mês a mês — POIS ASSIM tenho controle dos ganhos do negócio e
+reviso preços e produção com base na receita real, e não apenas no
+volume produzido.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>O painel-resumo deve exibir o <strong>faturamento do mês</strong>
+(R$) e a quantidade de <strong>pedidos entregues</strong> no
+período.</li>
+<li>O relatório financeiro deve apresentar o <strong>faturamento
+total</strong> e o <strong>número de pedidos</strong> do período.</li>
+<li>Deve exibir um <strong>gráfico de faturamento por mês</strong>.</li>
+<li>Deve listar os pedidos com <strong>cliente, data, valor e
+status</strong>.</li>
+<li>O faturamento deve considerar os pedidos <strong>não
+cancelados</strong> (a taxa de entrega compõe o valor total do
+pedido).</li>
+</ul>
 <h1 id="requisitos-funcionais-derivados-das-histórias">5. Requisitos
 Funcionais (derivados das histórias)</h1>
 <p>Os requisitos RF001–RF035 derivam das histórias originais;
 <strong>RF036–RF046</strong> foram adicionados na Versão 2.0
 (HU015–HU022); <strong>RF047–RF048</strong> documentam recursos
 consolidados na implementação (central de notificações e upload de
-fotos).</p>
+fotos); <strong>RF049–RF050</strong> cobrem o controle de faturamento
+(HU023).</p>
 <table>
 <colgroup>
 <col style="width: 5%" />
@@ -1056,6 +1083,20 @@ leitura.</td>
 armazenada em <em>bucket</em> de objetos (Supabase Storage), com URL
 pública vinculada ao produto.</td>
 <td style="text-align: left;">HU001, HU006</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF049</td>
+<td style="text-align: left;">Exibir, no painel-resumo, indicadores de
+<strong>faturamento do mês</strong> e de <strong>pedidos
+entregues</strong>.</td>
+<td style="text-align: left;">HU017, HU023</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF050</td>
+<td style="text-align: left;">Oferecer um relatório financeiro com
+faturamento total, <strong>faturamento por mês</strong> (gráfico) e
+<strong>lista de pedidos</strong> (cliente, data, valor e status).</td>
+<td style="text-align: left;">HU023</td>
 </tr>
 </tbody>
 </table>
@@ -2270,6 +2311,12 @@ distinguindo o <strong>núcleo entregue e publicado</strong> do
 <tr>
 <td>HU022</td>
 <td>Configurações do negócio</td>
+<td>Implementado</td>
+</tr>
+<tr>
+<td>HU023</td>
+<td>Controle de faturamento (cards de receita + relatório
+financeiro)</td>
 <td>Implementado</td>
 </tr>
 </tbody>

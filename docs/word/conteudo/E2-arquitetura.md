@@ -61,5 +61,6 @@ A tabela a seguir resume o estado de implementação por história, distinguindo
 | HU020 | Catálogo / tabela de atacado para PJ | Parcial (tabela de preço no modelo) |
 | HU021 | Rastreabilidade do lote (QR Code) | Parcial (linha do tempo do lote disponível no painel) |
 | HU022 | Configurações do negócio | Implementado |
+| HU023 | Controle de faturamento (cards de receita + relatório financeiro) | Implementado |
 
 > **Legenda:** *Implementado* = construído e publicado · *Parcial* = fundamentos prontos no modelo de dados, interface em evolução · *Roadmap* = previsto no backlog. O backlog completo (Seção 4) representa a **visão de produto**; a entrega da Avaliação A3 prioriza o **núcleo operacional** (produção, perdas, estoque, validade, cardápio, pedidos e gestão).

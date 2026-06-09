@@ -1,9 +1,9 @@
 # 4. Product Backlog (Histórias de Usuário)
 
-O Product Backlog do MantovaniHub reúne **22 Histórias de Usuário (HU)**, superando com folga o
+O Product Backlog do MantovaniHub reúne **23 Histórias de Usuário (HU)**, superando com folga o
 requisito mínimo do modelo. As histórias HU001–HU014 derivam da 1ª entrevista com o cliente
 (14/04/2026); as histórias **HU015–HU022** foram incorporadas na Versão 2.0 a partir do feedback do
-2º encontro com o CEO Douglas Mantovani.
+2º encontro com o CEO Douglas Mantovani. A história **HU023** foi consolidada durante a implementação, atendendo à necessidade da gestora de acompanhar o faturamento (receita dos pedidos).
 
 ### HU001 – Cadastro de Produto (Ficha Técnica)
 
@@ -266,7 +266,7 @@ sem precisar gerar relatórios, e decido onde agir primeiro.
 
 **Critérios de Aceite:**
 
-- A tela inicial deve exibir cartões-resumo do mês corrente: produção total (kg), perda média (%), nº de lotes, validades próximas e pedidos em aberto.
+- A tela inicial deve exibir cartões-resumo do mês corrente: **faturamento (R$)**, produção total (kg), perda média (%), nº de lotes, validades próximas, pedidos em aberto e **pedidos entregues**.
 - Deve exibir um ranking dos **produtos mais produzidos** no mês (top 5).
 - Deve exibir um mini-gráfico de produção dos **últimos 6 meses**.
 - Deve destacar **alertas críticos** (validade ≤ 7 dias e lotes atrasados).
@@ -352,3 +352,19 @@ programador e mantenho regras consistentes em toda a plataforma.
 - Deve permitir configurar os marcos de alerta de validade (padrão 30/15/1 dia) e o prazo de pós-venda (padrão 5 dias).
 - Deve permitir escolher os **canais de notificação** (push, e-mail, WhatsApp) por tipo de evento.
 - Deve restringir essas configurações ao perfil **Administrador**.
+
+### HU023 – Controle de Faturamento e Receita
+
+**Título:** Acompanhamento do faturamento dos pedidos
+**História:** COMO Douglas (proprietário) e a esposa (gestora) GOSTARIA DE acompanhar quanto a
+Mantovani recebeu com os pedidos — o faturamento do mês, quantos pedidos foram feitos/entregues e a
+evolução mês a mês — POIS ASSIM tenho controle dos ganhos do negócio e reviso preços e produção com
+base na receita real, e não apenas no volume produzido.
+
+**Critérios de Aceite:**
+
+- O painel-resumo deve exibir o **faturamento do mês** (R$) e a quantidade de **pedidos entregues** no período.
+- O relatório financeiro deve apresentar o **faturamento total** e o **número de pedidos** do período.
+- Deve exibir um **gráfico de faturamento por mês**.
+- Deve listar os pedidos com **cliente, data, valor e status**.
+- O faturamento deve considerar os pedidos **não cancelados** (a taxa de entrega compõe o valor total do pedido).

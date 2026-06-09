@@ -2,7 +2,7 @@
 
 Os requisitos RF001–RF035 derivam das histórias originais; **RF036–RF046** foram adicionados na
 Versão 2.0 (HU015–HU022); **RF047–RF048** documentam recursos consolidados na implementação
-(central de notificações e upload de fotos).
+(central de notificações e upload de fotos); **RF049–RF050** cobrem o controle de faturamento (HU023).
 
 | ID | Descrição | Origem |
 |:------|:-----------------------------------------------------------------------------------------------------|:----------|
@@ -54,6 +54,8 @@ Versão 2.0 (HU015–HU022); **RF047–RF048** documentam recursos consolidados 
 | RF046 | Oferecer tela de configurações do negócio (empresa, categorias, alérgenos, alertas, canais), restrita ao Administrador. | HU022 |
 | RF047 | Disponibilizar uma central de notificações no painel que agrega pedidos novos, validades próximas (≤ 7 dias) e alertas, com contador de não lidas e marcação individual/total de leitura. | HU017, HU005, HU019 |
 | RF048 | Permitir o upload da foto do produto, armazenada em *bucket* de objetos (Supabase Storage), com URL pública vinculada ao produto. | HU001, HU006 |
+| RF049 | Exibir, no painel-resumo, indicadores de **faturamento do mês** e de **pedidos entregues**. | HU017, HU023 |
+| RF050 | Oferecer um relatório financeiro com faturamento total, **faturamento por mês** (gráfico) e **lista de pedidos** (cliente, data, valor e status). | HU023 |
 
 # 6. Regras de Negócio (RN)
 
