@@ -140,4 +140,4 @@ As **credenciais de demonstração** podem ser solicitadas à equipe para fins d
 ---
 
 <p align="center"><em>“Charcutaria é paciência que vira sabor.”</em><br>
-© 2026 Charcutaria Mantovani · Projeto acadêmico — Centro Universitário Una</p>
+© 2026 Charcutaria Mantovani · Projeto acadêmico
