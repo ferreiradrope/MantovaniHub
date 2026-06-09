@@ -4,7 +4,7 @@
 - **Produto:** MantovaniHub – Plataforma de Gestão Integrada para Charcutaria Artesanal (gestão de produção/lotes, estoque, validade, cardápio digital, e relacionamento com cliente)
 - **Product Owner:** Breno Gabriel da Silva
 - **Scrum Master:** Naegeli Raiane Guerra
-- **Time de Desenvolvimento:** Breno Gabriel da Silva; Bruno Henrique Silva dos Santos; Caio Rafael da Encarnação Freitas; Enzo Marinho Machado Vieira; Felipe Barbosa da Silva; Gabriel Correia Proença; Gabriel Maciel Cavalcante; Isaías Gomes Dally Junior; Mariana Albuquerque da Cruz; Naegeli Raiane Guerra; Pedro Henrique Esgote Santana; Pedro Henrique Ferreira da Silva; Tino Marcos Santos da Paz; Vinícius Anselmo
+- **Time de Desenvolvimento:** Bruno Henrique Silva dos Santos; Caio Rafael da Encarnação Freitas; Enzo Marinho Machado Vieira; Felipe Barbosa da Silva; Gabriel Correia Proença; Gabriel Maciel Cavalcante; Isaías Gomes Dally Junior; Mariana Albuquerque da Cruz; Pedro Henrique Esgote Santana; Pedro Henrique Ferreira da Silva; Tino Marcos Santos da Paz; Vinícius Anselmo
 - **Versão do Documento:** 2.0
 - **Data:** Junho de 2026
 
