@@ -1,0 +1,182 @@
+erDiagram
+    PERFIS ||--o{ LOTES : "registra"
+    CATEGORIAS ||--o{ PRODUTOS : "classifica"
+    PRODUTOS ||--o{ PRODUTO_ALERGENOS : "possui"
+    ALERGENOS ||--o{ PRODUTO_ALERGENOS : "marca"
+    PRODUTOS ||--o{ PRODUTO_ETAPAS : "define-roteiro"
+    PRODUTOS ||--o{ HARMONIZACOES : "sugere"
+    FORNECEDORES ||--o{ INSUMOS_ENTRADA : "fornece"
+    PRODUTOS ||--o{ INSUMOS_ENTRADA : "destino"
+    INSUMOS_ENTRADA ||--o{ LOTES : "origina"
+    PRODUTOS ||--o{ LOTES : "produz"
+    LOTES ||--o{ LOTE_ETAPAS : "executa"
+    LOTES ||--o{ ESTOQUE_MOVIMENTOS : "movimenta"
+    LOTES ||--o{ ALERTAS : "gera"
+    PRODUTOS ||--o{ ALERTAS : "refere"
+    CLIENTES ||--o{ PEDIDOS : "faz"
+    PEDIDOS ||--o{ PEDIDO_ITENS : "contem"
+    PRODUTOS ||--o{ PEDIDO_ITENS : "vendido-em"
+    LOTES ||--o{ PEDIDO_ITENS : "separado-de"
+    PEDIDOS ||--o{ PEDIDO_STATUS_HIST : "transita"
+    PEDIDOS ||--o{ ESTOQUE_MOVIMENTOS : "baixa"
+    CLIENTES ||--o{ CLIENTE_FEEDBACK : "avalia"
+    PEDIDOS ||--o{ CLIENTE_FEEDBACK : "sobre"
+    PLANOS_ASSINATURA ||--o{ ASSINATURAS : "contrata"
+    CLIENTES ||--o{ ASSINATURAS : "assina"
+
+    PERFIS {
+        uuid id PK "auth.users"
+        text nome
+        papel_usuario papel
+        boolean ativo
+    }
+    CATEGORIAS {
+        uuid id PK
+        text nome
+        text slug
+        int ordem
+    }
+    PRODUTOS {
+        uuid id PK
+        uuid categoria_id FK
+        text nome
+        text_array ingredientes
+        unidade_venda unidade
+        numeric preco_varejo
+        numeric preco_atacado
+        int tempo_producao_dias
+        numeric perda_media_pct
+        boolean disponivel_fora_mg
+        boolean ativo
+    }
+    ALERGENOS {
+        uuid id PK
+        text nome
+    }
+    PRODUTO_ALERGENOS {
+        uuid produto_id FK
+        uuid alergeno_id FK
+    }
+    PRODUTO_ETAPAS {
+        uuid id PK
+        uuid produto_id FK
+        int ordem
+        text nome_etapa
+        int duracao_dias
+    }
+    HARMONIZACOES {
+        uuid id PK
+        uuid produto_id FK
+        tipo_harmonizacao tipo
+        text nome
+    }
+    FORNECEDORES {
+        uuid id PK
+        text nome
+        char uf
+    }
+    INSUMOS_ENTRADA {
+        uuid id PK
+        uuid fornecedor_id FK
+        uuid produto_destino_id FK
+        text nf_numero
+        numeric peso_recebido_kg
+        date data_entrada
+    }
+    LOTES {
+        uuid id PK
+        text codigo "AAA.NNN"
+        uuid produto_id FK
+        uuid insumo_entrada_id FK
+        numeric peso_recebido_kg
+        numeric peso_final_kg
+        numeric perda_total_pct
+        numeric peso_disponivel_kg
+        status_lote status
+        date data_validade
+    }
+    LOTE_ETAPAS {
+        uuid id PK
+        uuid lote_id FK
+        int ordem
+        text nome_etapa
+        numeric peso_entrada_kg
+        numeric peso_saida_kg
+        numeric perda_pct
+        date data_prevista
+        boolean concluida
+    }
+    ESTOQUE_MOVIMENTOS {
+        uuid id PK
+        uuid lote_id FK
+        tipo_movimento tipo
+        numeric quantidade_kg
+        uuid pedido_id FK
+    }
+    ALERTAS {
+        uuid id PK
+        tipo_alerta tipo
+        severidade_alerta severidade
+        uuid lote_id FK
+        boolean resolvido
+    }
+    DATAS_ALVO {
+        uuid id PK
+        text nome
+        date data_alvo
+    }
+    CLIENTES {
+        uuid id PK
+        tipo_cliente tipo
+        text nome
+        text cnpj_cpf
+        tabela_preco tabela_preco
+        char uf
+    }
+    CLIENTE_FEEDBACK {
+        uuid id PK
+        uuid cliente_id FK
+        uuid pedido_id FK
+        int nota
+    }
+    PEDIDOS {
+        uuid id PK
+        int numero
+        uuid cliente_id FK
+        canal_pedido canal
+        status_pedido status
+        tipo_entrega tipo_entrega
+        numeric valor_total
+        boolean recorrente
+    }
+    PEDIDO_ITENS {
+        uuid id PK
+        uuid pedido_id FK
+        uuid produto_id FK
+        uuid lote_id FK
+        numeric quantidade
+        numeric subtotal
+    }
+    PEDIDO_STATUS_HIST {
+        uuid id PK
+        uuid pedido_id FK
+        status_pedido status
+        timestamptz criado_em
+    }
+    PLANOS_ASSINATURA {
+        uuid id PK
+        text nome
+        numeric preco_mensal
+    }
+    ASSINATURAS {
+        uuid id PK
+        uuid cliente_id FK
+        uuid plano_id FK
+        text status
+    }
+    CONFIG_NEGOCIO {
+        int id PK
+        text nome_empresa
+        int_array alerta_validade_dias
+        int pos_venda_dias
+    }

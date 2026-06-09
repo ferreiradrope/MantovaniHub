@@ -1,0 +1,58 @@
+% ===== Tema visual — Charcutaria Mantovani (bordô + creme) =====
+\usepackage{xcolor}
+\definecolor{bordo}{HTML}{8B1A1A}
+\definecolor{bordoescuro}{HTML}{5A1212}
+\definecolor{creme}{HTML}{F4ECDC}
+\definecolor{cremesuave}{HTML}{FBF6EC}
+\definecolor{cinzatexto}{HTML}{2B2320}
+
+\usepackage{titlesec}
+\titleformat{\section}{\LARGE\bfseries\color{bordo}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{bordoescuro}}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{bordo}}{}{0em}{}
+\titlespacing*{\section}{0pt}{2.2ex plus 1ex minus .2ex}{1.2ex plus .2ex}
+
+% Cabeçalho / rodapé
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{bordo}\leaders\hrule height \headrulewidth\hfill}}
+\fancyhead[L]{\small\color{bordo}\textbf{MantovaniHub}}
+\fancyhead[R]{\small\color{bordoescuro}Charcutaria Mantovani}
+\fancyfoot[C]{\small\color{bordoescuro}\thepage}
+
+% Tabelas mais arejadas
+\usepackage{booktabs}
+\usepackage{array}
+\renewcommand{\arraystretch}{1.28}
+\usepackage{ragged2e}
+
+% Caixas de destaque
+\usepackage[most]{tcolorbox}
+
+% Espaçamento
+\usepackage{setspace}
+\setstretch{1.07}
+
+% Paisagem (diagrama) e quebras
+\usepackage{pdflscape}
+\usepackage{needspace}
+
+% Glifos ausentes na Georgia → renderizados via modo matemático (independe da fonte)
+\usepackage{newunicodechar}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{×}{\ensuremath{\times}}
+
+% Quebra de linhas longas em blocos de código (script SQL), preservando o realce.
+% Adiada para \AtBeginDocument para sobrescrever a definição do próprio pandoc.
+\usepackage{fvextra}
+\fvset{breaklines=true,breakanywhere=true}
+\AtBeginDocument{%
+  \definecolor{shadecolor}{HTML}{FBF6EC}%
+  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\},fontsize=\footnotesize}%
+}

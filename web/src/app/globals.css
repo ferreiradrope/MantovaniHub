@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/* =====================================================================
+   MantovaniHub — Design System
+   Charcutaria artesanal premium: bordô profundo + creme/papel + dourado.
+   ===================================================================== */
+@theme {
+  /* ---- Vinho / bordô (cor da marca, extraída do cardápio) ---- */
+  --color-vinho-50: #fbf1ef;
+  --color-vinho-100: #f6ddd9;
+  --color-vinho-200: #ecbab2;
+  --color-vinho-300: #de8d82;
+  --color-vinho-400: #cd5b4e;
+  --color-vinho-500: #b23a2e;
+  --color-vinho-600: #8a1c24; /* primária */
+  --color-vinho-700: #731821;
+  --color-vinho-800: #5e121a;
+  --color-vinho-900: #4a1016;
+  --color-vinho-950: #2c090c;
+
+  /* ---- Creme / papel / areia ---- */
+  --color-creme: #f5ecdd;
+  --color-creme-claro: #fcf8f0;
+  --color-areia: #e8dcc4;
+  --color-areia-200: #ded0b3;
+  --color-areia-300: #cdb98f;
+
+  /* ---- Acentos ---- */
+  --color-dourado: #b8862e;
+  --color-dourado-claro: #d4a949;
+  --color-oliva: #5b6b3a;   /* sucesso / disponível / ervas */
+  --color-oliva-claro: #7d8c54;
+  --color-ambar: #c8941f;   /* alerta (validade amarela) */
+  --color-tijolo: #b23a2e;  /* perigo / vencido */
+
+  /* ---- Tinta / texto ---- */
+  --color-cafe: #2b2018;
+  --color-cafe-claro: #6b5d4f;
+  --color-cafe-300: #9a8a78;
+
+  /* ---- Tipografia ---- */
+  --font-display: var(--font-fraunces), "Georgia", serif;
+  --font-sans: var(--font-hanken), system-ui, -apple-system, sans-serif;
+
+  /* ---- Sombra suave (papel) ---- */
+  --shadow-soft: 0 1px 2px rgba(74, 16, 22, 0.04), 0 6px 20px -8px rgba(74, 16, 22, 0.12);
+  --shadow-card: 0 1px 0 rgba(255,255,255,0.6) inset, 0 8px 30px -12px rgba(74, 16, 22, 0.18);
+
+  /* ---- Animações ---- */
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fade-in 0.5s ease both;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ---- Base ---- */
+:root {
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--color-creme-claro);
+  color: var(--color-cafe);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--color-vinho-600);
+  color: var(--color-creme-claro);
+}
+
+/* Títulos com a serifa display por padrão */
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Scrollbar discreta na identidade */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-areia-300) transparent;
+}
+
+/* =====================================================================
+   Utilitários personalizados
+   ===================================================================== */
+
+/* Textura de papel/grão sutil para heros e seções de destaque */
+@utility grain {
+  position: relative;
+}
+@utility grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+}
+
+/* Linha decorativa estilo etiqueta de charcutaria */
+@utility rule-vinho {
+  background: linear-gradient(90deg, transparent, var(--color-areia-300), transparent);
+  height: 1px;
+}
+
+/* Número de lote em mono tabular */
+@utility lote-codigo {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+/* Animação de entrada escalonada (usar com style=animation-delay) */
+@utility animate-rise {
+  animation: var(--animate-fade-up);
+}

@@ -1,0 +1,1606 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><style>/* Estilo que replica o documento original (Word · Segoe UI · preto/branco) */
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Segoe UI", "Segoe UI Web (West European)", Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.45;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+/* Título principal e subtítulo (cabeçalho do documento) */
+.doc-title {
+  font-size: 19pt;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 6px;
+}
+.doc-subtitle {
+  font-size: 10pt;
+  color: #4a4a4a;
+  margin: 0 0 6px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #c9c9c9;
+}
+
+/* Seções numeradas (markdown #) */
+h1 {
+  font-size: 14pt;
+  font-weight: 700;
+  margin: 22px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #cfcfcf;
+}
+/* Subseções (markdown ##) */
+h2 {
+  font-size: 12pt;
+  font-weight: 700;
+  margin: 16px 0 6px;
+}
+/* Histórias de usuário e blocos (markdown ###) */
+h3 {
+  font-size: 11.5pt;
+  font-weight: 700;
+  margin: 18px 0 7px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #dcdcdc;
+}
+h4 { font-size: 10.5pt; font-weight: 700; margin: 12px 0 5px; }
+
+p { margin: 6px 0; }
+ul { margin: 6px 0; padding-left: 20px; }
+ol { margin: 6px 0; padding-left: 22px; }
+li { margin: 3px 0; }
+strong { font-weight: 700; }
+
+a { color: #1a1a1a; text-decoration: none; }
+
+/* Código inline e blocos (Consolas) */
+code {
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 9.5pt;
+  background: #f2f2f2;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+pre {
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 8.5pt;
+  line-height: 1.35;
+  background: #f7f7f7;
+  border: 1px solid #d8d8d8;
+  padding: 10px 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+pre code { background: none; padding: 0; font-size: inherit; }
+
+/* Tabelas estilo Word: grade completa + cabeçalho cinza */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 10px 0;
+  font-size: 9.5pt;
+}
+th, td {
+  border: 1px solid #8c8c8c;
+  padding: 5px 7px;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  background: #e8e8e8;
+  font-weight: 700;
+}
+
+/* Declaração de visão e destaques: barra vertical à esquerda */
+blockquote {
+  border-left: 4px solid #555;
+  margin: 12px 0;
+  padding: 6px 16px;
+  color: #2a2a2a;
+}
+blockquote p { margin: 4px 0; }
+
+/* Diagrama ER — em página própria, paisagem, para máxima legibilidade */
+@page paisagem { size: A4 landscape; margin: 1.3cm; }
+.figura { text-align: center; margin: 16px 0; page-break-inside: avoid; }
+.figura img { max-width: 100%; height: auto; border: 1px solid #d8d8d8; }
+.figura .legenda { font-size: 9pt; color: #555; margin-top: 6px; }
+.figura-landscape {
+  page: paisagem;
+  page-break-before: always;
+  page-break-after: always;
+}
+.figura-landscape img { width: 100%; max-height: 17.5cm; object-fit: contain; }
+
+/* Quebra de página antes de seções grandes (opcional via classe) */
+.page-break { page-break-before: always; }
+
+/* Evita títulos órfãos e quebra dentro de tabelas/código */
+h1, h2, h3, h4 { page-break-after: avoid; }
+table, pre, blockquote, ul, ol { page-break-inside: avoid; }
+tr { page-break-inside: avoid; }
+</style></head>
+<body>
+<div class="doc-title">Documento de Requisitos Ágil (Scrum + Histórias de Usuário)</div>
+<div class="doc-subtitle"><strong>Projeto:</strong> Charcutaria Mantovani &nbsp;&nbsp;&nbsp; <strong>Documento:</strong> Levantamento de Requisitos – Entrega 2 (Avaliação A3) &nbsp;&nbsp;&nbsp; <strong>Versão:</strong> 2.0</div>
+<h1 id="identificação">1. Identificação</h1>
+<ul>
+<li><strong>Projeto:</strong> Charcutaria Mantovani</li>
+<li><strong>Produto:</strong> MantovaniHub – Plataforma de Gestão Integrada para Charcutaria Artesanal (gestão de produção/lotes, estoque, validade, cardápio digital, e relacionamento com cliente)</li>
+<li><strong>Product Owner:</strong> Breno Gabriel da Silva</li>
+<li><strong>Scrum Master:</strong> Naegeli Raiane Guerra</li>
+<li><strong>Time de Desenvolvimento:</strong> Breno Gabriel da Silva; Bruno Henrique Silva dos Santos; Caio Rafael da Encarnação Freitas; Enzo Marinho Machado Vieira; Felipe Barbosa da Silva; Gabriel Correia Proença; Gabriel Maciel Cavalcante; Isaías Gomes Dally Junior; Mariana Albuquerque da Cruz; Naegeli Raiane Guerra; Pedro Henrique Esgote Santana; Pedro Henrique Ferreira da Silva; Tino Marcos Santos da Paz; Vinícius Anselmo</li>
+<li><strong>Versão do Documento:</strong> 2.0</li>
+<li><strong>Data:</strong> Junho de 2026</li>
+</ul>
+<h1 id="visão-do-produto">2. Visão do Produto</h1>
+<h2 id="objetivo">2.1 Objetivo</h2>
+<p>A Charcutaria Mantovani é uma microempresa artesanal localizada no bairro Prado, em Belo Horizonte/MG, formada por apenas duas pessoas (o proprietário Douglas, formado em gastronomia, e sua esposa). A empresa produz embutidos, defumados, curados e maturados (linguiças, bacons, salames, pastrami, salmão defumado, copa maturada, presunto cru, entre outros) e atende tanto pessoa jurídica (restaurantes, padarias, empórios e casas de eventos) quanto pessoa física (cliente final na loja, via WhatsApp e redes sociais).</p>
+<p>A pequena equipe acumula múltiplos papéis (produção, atendimento, marketing, financeiro e logística) e enfrenta dificuldades específicas que sistemas genéricos de gestão (como o Bling, hoje utilizado apenas para emissão de nota fiscal e controle administrativo) não conseguem resolver:</p>
+<ul>
+<li>Controle de produção artesanal com rastreabilidade por lote (numeração no padrão <code>AAA.NNN</code>, ex.: <code>026.015</code>).</li>
+<li>Cálculo de perda de matéria-prima ao longo do processo (limpeza, cura, defumação, cozimento, maturação) — uma carne pode chegar com 10 kg e resultar em apenas 6 kg de produto final, com perdas que variam de 30% a 50% de produto para produto e até de lote para lote.</li>
+<li>Mensuração mensal do que foi produzido por categoria de produto.</li>
+<li>Controle e alerta de validade (produtos vencendo na geladeira por falta de aviso).</li>
+<li>Atendimento ao cliente (sobrecarga de WhatsApp paralela à produção, sem perder o caráter humanizado, que é diferencial da marca).</li>
+<li>Cardápio digital com fotos e ingredientes (hoje só com nome e preço, dificultando a venda de produtos cujo nome é desconhecido pelo público — coppa, pastrami — e prejudicando clientes alérgicos).</li>
+<li>Reativação do site com vitrine institucional, marketplace e clube de assinatura (com harmonização charcutaria + queijo + vinho).</li>
+</ul>
+<p>O sistema deve ser mobile-first, pois Douglas e sua esposa operam predominantemente pelo celular durante a produção e o atendimento.</p>
+<h2 id="declaração-de-visão-product-vision">2.2 Declaração de Visão (Product Vision)</h2>
+<blockquote>
+<p>Para Douglas e a equipe da Charcutaria Mantovani, que precisam controlar a produção artesanal por lote, mensurar perdas, monitorar validades, agilizar o atendimento e ampliar a divulgação dos produtos sem perder o toque humano da marca, o MantovaniHub é uma plataforma digital de gestão integrada e relacionamento com o cliente que automatiza o registro de lotes e perdas, alerta vencimentos, oferece cardápio digital com fotos e ingredientes, integra um marketplace ao site institucional e qualifica o atendimento via WhatsApp — preservando o caráter artesanal e personalizado que diferencia a Mantovani no mercado.</p>
+</blockquote>
+<h1 id="personas">3. Personas</h1>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Descrição</th>
+<th>Objetivos</th>
+<th>Dores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Douglas (Mestre Charcuteiro / Proprietário)</strong></td>
+<td>Formado em gastronomia, é o responsável pela produção, criação de receitas, compras de insumos e parte do atendimento ao cliente. Trabalha predominantemente no celular, com as mãos na massa (literalmente).</td>
+<td>Registrar a produção e as perdas de forma rápida, do próprio celular, sem interromper o fluxo de produção; ter histórico mensal por produto; ser avisado quando um lote estiver perto de vencer; reduzir o tempo gasto respondendo dúvidas repetidas no WhatsApp.</td>
+<td>Hoje o controle é visual e em planilhas Excel separadas (ficha técnica em uma, produção em outra); o Bling é genérico demais e exige login no desktop; não consegue medir quanto produz de cada item por mês; produtos vencem na geladeira sem aviso; o telefone toca no meio da produção e ele precisa parar para responder.</td>
+</tr>
+<tr>
+<td><strong>Esposa de Douglas (Gestora / Administradora)</strong></td>
+<td>Cuida do administrativo, financeiro, emissão de nota fiscal e ajuda no atendimento. Tem apoio da cunhada para o Instagram.</td>
+<td>Centralizar dados em um único lugar; emitir relatórios de faturamento e produção; acompanhar estoque em tempo real; gerenciar o clube de assinatura quando ele entrar no ar.</td>
+<td>Múltiplas planilhas desconectadas; precisa do desktop para o Bling enquanto o restante da operação acontece no celular; falta de visão consolidada entre produção, vendas e estoque.</td>
+</tr>
+<tr>
+<td><strong>Chef / Comprador (Cliente Pessoa Jurídica)</strong></td>
+<td>Chef de restaurante, padaria, empório ou casa de eventos. Compra em maior volume e com maior recorrência; representa o canal de maior faturamento da Mantovani. Pode ser de MG ou de outros estados (ES, SP etc.).</td>
+<td>Consultar rapidamente a tabela de produtos com ingredientes e disponibilidade; fazer pedidos recorrentes de forma ágil; negociar amostras e novos produtos; compor o próprio cardápio com os produtos da Mantovani.</td>
+<td>Precisa esperar resposta do WhatsApp (que pode demorar quando Douglas está produzindo); não tem como consultar a ficha de ingredientes por conta própria; depende de catálogo PDF e de boca a boca para conhecer novidades.</td>
+</tr>
+<tr>
+<td><strong>Consumidor Final (Cliente Pessoa Física)</strong></td>
+<td>Apreciador de charcutaria, normalmente atraído por Instagram, indicação ou pela loja física. Compra ticket menor, mas com margem maior. Pode ser alérgico a algum ingrediente ou ter restrição (pimenta, glúten etc.).</td>
+<td>Conhecer o que é cada produto (foto, descrição e ingredientes antes de comprar); comprar pelo site/WhatsApp e receber em casa; receber sugestões de harmonização (queijos, vinhos); confiar na qualidade e no caráter artesanal do produto.</td>
+<td>O cardápio atual só tem nome e preço — não sabe o que é uma “coppa”; precisa perguntar ingrediente a ingrediente quando tem alergia; não tem opção de comprar pelo site (atualmente desativado); demora para receber resposta do WhatsApp.</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="product-backlog-histórias-de-usuário">4. Product Backlog (Histórias de Usuário)</h1>
+<p>O Product Backlog do MantovaniHub reúne <strong>22 Histórias de Usuário (HU)</strong>, superando com folga o
+requisito mínimo do modelo. As histórias HU001–HU014 derivam da 1ª entrevista com o cliente
+(14/04/2026); as histórias <strong>HU015–HU022</strong> foram incorporadas na Versão 2.0 a partir do feedback do
+2º encontro com o CEO Douglas Mantovani.</p>
+<h3 id="hu001-cadastro-de-produto-ficha-técnica">HU001 – Cadastro de Produto (Ficha Técnica)</h3>
+<p><strong>Título:</strong> Cadastro de produto e ficha técnica
+<strong>História:</strong> COMO Douglas (proprietário/charcuteiro) GOSTARIA DE cadastrar cada produto da
+charcutaria com nome, descrição, foto, categoria (fresco / defumado / curado / maturado), tempo
+médio de produção, ingredientes, preço de venda e percentual médio de perda POIS ASSIM terei
+uma base única que alimenta o cardápio digital, o controle de produção e os relatórios financeiros.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>Deve permitir cadastrar produto com nome, categoria, descrição, ingredientes (lista) e foto.</li>
+<li>Deve permitir registrar o tempo médio de produção em dias (ex.: linguiça = 1 dia, pastrami = 10–15 dias, copa maturada = 120 dias, presunto cru ≥ 180 dias).</li>
+<li>Deve permitir registrar o percentual médio de perda estimado por experiência (entre 0% e 60%).</li>
+<li>Deve permitir editar e desativar produtos sem excluir o histórico.</li>
+<li>Deve exibir mensagem de sucesso após o cadastro.</li>
+</ul>
+<h3 id="hu002-entrada-de-insumo-e-abertura-de-lote">HU002 – Entrada de Insumo e Abertura de Lote</h3>
+<p><strong>Título:</strong> Registrar recebimento de insumo e abrir lote
+<strong>História:</strong> COMO Douglas GOSTARIA DE registrar pelo celular o recebimento da matéria-prima
+(carne/peixe), informando fornecedor, peso conferido, nota fiscal e o produto-destino, gerando
+automaticamente um número de lote no padrão <code>AAA.NNN</code> POIS ASSIM tenho rastreabilidade do insumo
+até o produto final, atendendo inclusive à vigilância sanitária.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>Ao registrar uma entrada, o sistema deve gerar automaticamente o lote no formato <code>AAA.NNN</code> (ex.: <code>026.015</code>), onde <code>AAA</code> são os três últimos dígitos do ano e <code>NNN</code> é sequencial.</li>
+<li>Deve permitir informar fornecedor, número da NF, data, peso recebido e produto-destino.</li>
+<li>Deve permitir anexar a foto da etiqueta/NF.</li>
+<li>Deve gerar etiqueta de lote para impressão ou exibição com QR Code.</li>
+<li>O lote deve ficar vinculado a todas as etapas seguintes (limpeza, cura, defumação, embalagem).</li>
+</ul>
+<h3 id="hu003-registro-das-etapas-de-produção-e-perdas">HU003 – Registro das Etapas de Produção e Perdas</h3>
+<p><strong>Título:</strong> Apontamento das etapas de produção
+<strong>História:</strong> COMO Douglas GOSTARIA DE registrar as pesagens em cada etapa do processo
+(limpeza, cura, defumação/maturação, embalagem) por lote POIS ASSIM o sistema calcula
+automaticamente a perda absoluta (kg) e percentual (%) de cada etapa e do processo total.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>Cada lote deve permitir registrar <code>peso_recebido</code>, <code>peso_após_limpeza</code> e <code>peso_final_pronto</code>.</li>
+<li>O sistema deve calcular automaticamente a perda em kg e em % por etapa e total.</li>
+<li>Deve permitir registrar a data em que cada etapa foi concluída.</li>
+<li>Deve avisar visualmente se a perda total ultrapassar a média histórica daquele produto em mais de 10 pontos percentuais.</li>
+<li>O lote só é considerado “pronto para estoque” depois do peso final ser registrado.</li>
+</ul>
+<h3 id="hu004-relatório-mensal-de-produção-e-perdas">HU004 – Relatório Mensal de Produção e Perdas</h3>
+<p><strong>Título:</strong> Relatório consolidado de produção
+<strong>História:</strong> COMO Douglas (e a esposa, gestora) GOSTARIA DE visualizar quantos quilos de
+cada produto foram produzidos no mês, qual foi a perda média e o histórico mês a mês POIS ASSIM
+consigo planejar a produção para datas comemorativas (Dia das Mães, Natal) e revisar preços de venda
+com base na perda real.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>O relatório deve agrupar a produção por produto e por mês.</li>
+<li>Deve exibir total produzido (kg), total perdido (kg), perda média (%) e número de lotes.</li>
+<li>Deve permitir exportar o relatório em PDF e enviar por e-mail.</li>
+<li>Deve permitir filtrar por intervalo de datas.</li>
+<li>Deve apresentar um gráfico comparativo entre meses.</li>
+</ul>
+<h3 id="hu005-alerta-de-validade">HU005 – Alerta de Validade</h3>
+<p><strong>Título:</strong> Alerta de validade próxima
+<strong>História:</strong> COMO Douglas GOSTARIA DE receber notificações quando um lote em estoque
+estiver a 30, 15 e 1 dia(s) de vencer POIS ASSIM consigo priorizar a venda, criar promoções para
+o consumidor final e evitar descarte de produto.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>O sistema deve disparar notificação no celular (push e/ou e-mail) nos marcos de 30, 15 e 1 dia(s) antes do vencimento.</li>
+<li>A tela de estoque deve sinalizar em amarelo (≤ 30 dias) e vermelho (≤ 7 dias).</li>
+<li>Deve permitir gerar uma “lista de promoção” com lotes próximos do vencimento.</li>
+<li>Deve permitir registrar descarte com motivo, alimentando o histórico de perdas.</li>
+</ul>
+<h3 id="hu006-cardápio-digital-com-fotos-e-ingredientes">HU006 – Cardápio Digital com Fotos e Ingredientes</h3>
+<p><strong>Título:</strong> Cardápio digital interativo
+<strong>História:</strong> COMO consumidor final (cliente pessoa física) GOSTARIA DE consultar o cardápio
+da Charcutaria com fotos, descrição, ingredientes e preço, separado por categoria POIS ASSIM
+entendo o que é cada produto (coppa, pastrami, salame), evito ingredientes aos quais sou alérgico e
+decido a compra com segurança.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>O cardápio deve ser acessível por link único (compartilhável no WhatsApp e no Instagram, inclusive em destaques/Stories).</li>
+<li>Cada item deve exibir foto, nome, descrição, lista de ingredientes, alérgenos destacados (pimenta, glúten, lactose etc.) e preço.</li>
+<li>Deve permitir filtrar por categoria (Frescos, Defumados, Maturados) e por alérgeno (excluir).</li>
+<li>Deve ser responsivo / mobile-first.</li>
+<li>Deve permitir clicar em “Pedir pelo WhatsApp” com mensagem pré-formatada do produto.</li>
+</ul>
+<h3 id="hu007-pedido-pelo-site-marketplace">HU007 – Pedido pelo Site (Marketplace)</h3>
+<p><strong>Título:</strong> Compra pelo site institucional
+<strong>História:</strong> COMO consumidor final GOSTARIA DE montar um pedido no site da Charcutaria
+Mantovani, escolher a forma de entrega e pagar via Pix ou cartão POIS ASSIM compro com
+autonomia, sem depender de horário de atendimento humano no WhatsApp.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>Deve permitir adicionar produtos ao carrinho a partir do cardápio digital.</li>
+<li>Deve permitir escolher entrega por motoboy (cobrada por região) ou retirada na loja.</li>
+<li>Deve aceitar pagamento via Pix (cobrança gerada antes do envio) e cartão de crédito.</li>
+<li>Deve emitir confirmação de pedido por e-mail e WhatsApp.</li>
+<li>Deve gerar pedido no painel administrativo do MantovaniHub, baixando estoque automaticamente.</li>
+</ul>
+<h3 id="hu008-atendimento-automatizado-faq-via-whatsapp">HU008 – Atendimento Automatizado (FAQ) via WhatsApp</h3>
+<p><strong>Título:</strong> Bot de qualificação de atendimento
+<strong>História:</strong> COMO Douglas GOSTARIA DE que perguntas frequentes (preço, prazo, entrega,
+ingredientes, formas de pagamento) sejam respondidas automaticamente no WhatsApp, com transferência
+para uma pessoa humana no momento do fechamento POIS ASSIM consigo focar na produção e responder
+pessoalmente apenas as conversas que precisam do meu olhar — sem perder o tom humano da marca.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>O bot deve identificar a intenção da mensagem (preço, ingredientes, entrega, horário, pagamento) e responder com base no cardápio cadastrado.</li>
+<li>Deve transferir a conversa para um humano assim que o cliente sinalizar intenção de fechar a compra ou enviar uma mensagem fora do escopo do FAQ.</li>
+<li>Deve registrar as conversas atendidas e gerar relatório de perguntas mais frequentes.</li>
+<li>Deve permitir ao Douglas pausar o bot a qualquer momento.</li>
+<li>Deve sempre se identificar de forma transparente como atendimento automático na primeira mensagem.</li>
+</ul>
+<h3 id="hu009-pós-venda-e-coleta-de-feedback">HU009 – Pós-venda e Coleta de Feedback</h3>
+<p><strong>Título:</strong> Pós-venda automatizado com toque humano
+<strong>História:</strong> COMO Douglas GOSTARIA DE que o sistema dispare uma mensagem alguns dias após a
+entrega perguntando se o cliente experimentou e o que achou, com texto personalizado POIS ASSIM
+mantenho o relacionamento sem precisar lembrar manualmente de cada cliente, e ainda colho feedback
+sobre os produtos.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>A mensagem de pós-venda deve ser disparada automaticamente após X dias da entrega (configurável; padrão = 5 dias).</li>
+<li>O texto deve ser personalizado com nome do cliente e produto comprado.</li>
+<li>A resposta do cliente deve cair direto para Douglas (não para o bot).</li>
+<li>Deve permitir registrar o feedback no perfil do cliente.</li>
+<li>Deve permitir desativar o pós-venda para clientes específicos.</li>
+</ul>
+<h3 id="hu010-clube-de-assinatura">HU010 – Clube de Assinatura</h3>
+<p><strong>Título:</strong> Clube de assinatura com harmonização
+<strong>História:</strong> COMO consumidor final GOSTARIA DE assinar um clube mensal da Charcutaria
+Mantovani com diferentes níveis (Premium, Intermediário, Essencial) que combinam charcutaria com
+queijos e vinhos parceiros POIS ASSIM recebo uma curadoria de produtos artesanais todo mês, sem
+precisar escolher item a item.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>Deve permitir oferecer pelo menos 3 planos (Essencial – só charcutaria; Intermediário – charcutaria + queijo; Premium – charcutaria + queijo + vinho).</li>
+<li>Deve permitir cobrança recorrente mensal (cartão de crédito).</li>
+<li>Deve permitir ao Douglas montar a “caixa do mês” com produtos diferentes a cada ciclo.</li>
+<li>Deve permitir ao assinante pausar, alterar ou cancelar a assinatura pelo painel.</li>
+<li>Deve gerar lista de envio mensal para a logística.</li>
+</ul>
+<h3 id="hu011-sugestão-de-harmonização">HU011 – Sugestão de Harmonização</h3>
+<p><strong>Título:</strong> Sistema de recomendação de harmonização
+<strong>História:</strong> COMO consumidor final GOSTARIA DE ver sugestões de harmonização (vinhos,
+queijos, pães) ao escolher um produto de charcutaria no cardápio digital POIS ASSIM componho uma
+experiência completa e a Mantovani aumenta o ticket médio do pedido.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>Cada produto deve poder ser cadastrado com pelo menos 2 sugestões de harmonização.</li>
+<li>A página do produto deve exibir o bloco “Combina com…” com fotos das sugestões.</li>
+<li>A sugestão deve poder ser adicionada ao carrinho com um clique.</li>
+<li>Deve permitir a Douglas atualizar as sugestões a qualquer momento.</li>
+</ul>
+<h3 id="hu012-página-institucional-e-conteúdo-do-processo-artesanal">HU012 – Página Institucional e Conteúdo do Processo Artesanal</h3>
+<p><strong>Título:</strong> Site institucional contando o processo
+<strong>História:</strong> COMO consumidor final GOSTARIA DE ler/assistir como cada produto é feito, em
+quanto tempo, com quais ingredientes e por que ele é artesanal POIS ASSIM compreendo o valor do
+produto e o porquê do preço, deixando de questionar “por que é caro”.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>O site deve ter uma página “Nossa História” e uma página “Como Fazemos” com texto, fotos e vídeos.</li>
+<li>Deve apresentar tempos de produção e processos (cura, defumação, maturação) de forma didática.</li>
+<li>Deve ter botões para WhatsApp, Instagram e cardápio em todas as páginas.</li>
+<li>Deve ser responsivo / mobile-first.</li>
+</ul>
+<h3 id="hu013-painel-de-estoque-em-tempo-real">HU013 – Painel de Estoque em Tempo Real</h3>
+<p><strong>Título:</strong> Visualização do estoque por produto e lote
+<strong>História:</strong> COMO esposa do Douglas (gestora) GOSTARIA DE consultar do celular o estoque
+atual da loja, agrupado por produto e detalhado por lote (com peso e validade) POIS ASSIM
+respondo rapidamente clientes que pedem pronta-entrega e tomo decisões de venda informadas.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>Deve exibir total em kg por produto e quantidade por lote.</li>
+<li>Deve permitir filtrar por categoria, validade próxima e disponibilidade.</li>
+<li>Deve atualizar em tempo real quando uma venda for registrada ou um lote for finalizado.</li>
+<li>Deve permitir lançar baixa manual de estoque (ex.: descarte, consumo interno).</li>
+</ul>
+<h3 id="hu014-instalação-como-aplicativo-pwa">HU014 – Instalação como Aplicativo (PWA)</h3>
+<p><strong>Título:</strong> Instalação da plataforma como aplicativo no celular
+<strong>História:</strong> COMO consumidor final e Douglas (proprietário) GOSTARIA DE instalar o
+MantovaniHub na tela inicial do meu celular, com ícone próprio e funcionamento parecido com um app
+nativo, sem precisar baixar nada da loja de aplicativos POIS ASSIM acesso o cardápio e o painel
+mais rapidamente, recebo notificações push e tenho uma experiência mais próxima de um app.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>O site deve oferecer instrução/botão de “Instalar app” nos navegadores compatíveis (Chrome, Edge, Safari).</li>
+<li>Após a instalação, o sistema deve apresentar ícone próprio na tela inicial e splash screen ao abrir.</li>
+<li>A plataforma deve manter cache offline para o cardápio digital já visitado, permitindo consulta sem conexão.</li>
+<li>A sessão do usuário deve ser mantida ao reabrir o app instalado.</li>
+<li>Deve suportar notificações push nativas do celular para alertas de validade (Douglas) e confirmações de pedido (cliente).</li>
+</ul>
+<p><strong>Histórias incorporadas na Versão 2.0 (feedback do 2º encontro com o CEO).</strong> As oito histórias a seguir endereçam diretamente os pontos levantados por Douglas: alerta de produção (HU016), resumo do mês (HU017), cadastro que gera estoque (HU001 + HU009/HU019) e cardápio com ficha técnica e harmonização (HU006/HU011), além de fundamentos de segurança, relacionamento e configuração que sustentam a operação real.</p>
+<h3 id="hu015-autenticação-e-controle-de-acesso">HU015 – Autenticação e Controle de Acesso</h3>
+<p><strong>Título:</strong> Login seguro e perfis de acesso
+<strong>História:</strong> COMO Douglas (proprietário) e a esposa (gestora) GOSTARIA DE acessar o painel
+administrativo com login protegido por senha e perfis de acesso distintos (administrador, gestor e
+produção) POIS ASSIM protejo os dados sensíveis do negócio (custos, clientes, faturamento) e cada
+pessoa vê apenas o que é pertinente à sua função.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>Deve permitir login com e-mail e senha, com sessão persistente no celular.</li>
+<li>Deve oferecer recuperação de senha por e-mail.</li>
+<li>Deve suportar pelo menos três perfis: <strong>Administrador</strong> (acesso total), <strong>Gestor</strong> (produção, estoque, relatórios, clientes e pedidos) e <strong>Produção</strong> (apenas apontamento de lotes/etapas).</li>
+<li>Deve registrar data e hora do último acesso de cada usuário.</li>
+<li>Deve encerrar a sessão automaticamente após período de inatividade e suportar 2FA opcional (alinhado ao RNF007).</li>
+</ul>
+<h3 id="hu016-alerta-de-produção-e-agenda-de-maturação">HU016 – Alerta de Produção e Agenda de Maturação</h3>
+<p><strong>Título:</strong> Alertas de produção e agenda de maturação
+<strong>História:</strong> COMO Douglas (charcuteiro) GOSTARIA DE receber alertas quando um lote precisar
+avançar para a próxima etapa (virar a peça na cura, iniciar a defumação, embalar) e quando eu
+precisar iniciar a produção de um item de ciclo longo (copa maturada ≈ 120 dias, presunto cru ≥ 180
+dias) para chegar a tempo de uma data comemorativa POIS ASSIM nenhum lote “passa do ponto” nem
+falta produto nas datas de maior venda (Dia das Mães, Natal), mesmo com a produção dependendo da
+memória.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>Deve permitir definir, por produto, a duração de cada etapa e calcular a data prevista de conclusão do lote.</li>
+<li>Deve gerar alerta (push e/ou painel) quando um lote atingir a data prevista de mudança de etapa.</li>
+<li>Deve permitir cadastrar <strong>datas-alvo</strong> (ex.: Natal) e calcular regressivamente a <strong>data-limite para iniciar</strong> a produção de cada produto de ciclo longo.</li>
+<li>Deve exibir uma <strong>“agenda de maturação”</strong> com os lotes em andamento e suas próximas ações organizadas por data.</li>
+<li>Deve sinalizar visualmente os lotes <strong>atrasados</strong> em relação à etapa prevista.</li>
+</ul>
+<h3 id="hu017-dashboard-resumo-do-mês">HU017 – Dashboard “Resumo do Mês”</h3>
+<p><strong>Título:</strong> Painel-resumo do mês (visão executiva)
+<strong>História:</strong> COMO Douglas e a esposa (gestora) GOSTARIA DE abrir o sistema e ver, numa única
+tela, o resumo do mês — total produzido (kg), perda média (%), número de lotes, produtos a vencer,
+pedidos em aberto e os produtos mais produzidos POIS ASSIM tenho a saúde do negócio em segundos,
+sem precisar gerar relatórios, e decido onde agir primeiro.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>A tela inicial deve exibir cartões-resumo do mês corrente: produção total (kg), perda média (%), nº de lotes, validades próximas e pedidos em aberto.</li>
+<li>Deve exibir um ranking dos <strong>produtos mais produzidos</strong> no mês (top 5).</li>
+<li>Deve exibir um mini-gráfico de produção dos <strong>últimos 6 meses</strong>.</li>
+<li>Deve destacar <strong>alertas críticos</strong> (validade ≤ 7 dias e lotes atrasados).</li>
+<li>Deve permitir alternar o mês de referência.</li>
+</ul>
+<h3 id="hu018-cadastro-e-gestão-de-clientes-crm">HU018 – Cadastro e Gestão de Clientes (CRM)</h3>
+<p><strong>Título:</strong> Cadastro e histórico de clientes (PF e PJ)
+<strong>História:</strong> COMO a esposa de Douglas (gestora) GOSTARIA DE cadastrar clientes pessoa física
+e jurídica com dados de contato, endereço e tipo, e visualizar o histórico de pedidos e feedbacks de
+cada um POIS ASSIM personalizo o atendimento, identifico os melhores clientes (PJ recorrentes) e
+mantenho o relacionamento humano que diferencia a marca.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>Deve permitir cadastrar cliente com nome, tipo (PF/PJ), telefone/WhatsApp, e-mail, endereço e observações.</li>
+<li>Para PJ, deve permitir registrar CNPJ, razão social e a <strong>tabela de preços aplicável (atacado)</strong>.</li>
+<li>Deve exibir o <strong>histórico de pedidos</strong> e o total comprado por cliente.</li>
+<li>Deve permitir registrar feedback/pós-venda no perfil do cliente.</li>
+<li>Deve permitir buscar clientes por nome, telefone ou tipo.</li>
+</ul>
+<h3 id="hu019-gestão-de-pedidos-no-painel-kanban">HU019 – Gestão de Pedidos no Painel (Kanban)</h3>
+<p><strong>Título:</strong> Acompanhamento de pedidos em quadro
+<strong>História:</strong> COMO a esposa de Douglas (gestora) GOSTARIA DE visualizar e gerenciar os
+pedidos num quadro por status (Recebido → Em separação → Pronto → Entregue/Retirado), movendo o
+pedido conforme ele avança POIS ASSIM nenhum pedido é esquecido, a separação é organizada e o
+cliente recebe no prazo.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>Deve exibir os pedidos em colunas por status (Recebido, Em separação, Pronto, Entregue, Cancelado).</li>
+<li>Deve permitir mover o pedido entre status e registrar data/hora de cada mudança.</li>
+<li>Deve exibir, em cada pedido, o cliente, os itens, o valor total e a forma de entrega.</li>
+<li>Ao confirmar um pedido, deve <strong>baixar o estoque</strong> dos lotes correspondentes (regra FEFO).</li>
+<li>Deve permitir filtrar por período, status e cliente.</li>
+</ul>
+<h3 id="hu020-catálogo-e-tabela-de-preços-para-comprador-pj">HU020 – Catálogo e Tabela de Preços para Comprador PJ</h3>
+<p><strong>Título:</strong> Catálogo de atacado para clientes pessoa jurídica
+<strong>História:</strong> COMO chef/comprador (cliente pessoa jurídica) GOSTARIA DE consultar uma tabela
+de produtos com preço de atacado, disponibilidade atual e ficha de ingredientes, e montar um pedido
+(inclusive recorrente) POIS ASSIM faço minhas compras com autonomia, sem depender do horário de
+atendimento humano, e componho meu próprio cardápio com os produtos da Mantovani.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>Deve exibir, para o cliente PJ autenticado, a <strong>tabela de preços de atacado</strong> (distinta do varejo).</li>
+<li>Deve exibir a disponibilidade (em estoque / sob encomenda) de cada produto.</li>
+<li>Deve permitir montar um pedido e marcá-lo como <strong>recorrente</strong>.</li>
+<li>Deve respeitar o bloqueio de produtos não autorizados para venda fora de MG (RN013).</li>
+<li>Deve permitir visualizar/baixar a ficha técnica de cada item.</li>
+</ul>
+<h3 id="hu021-rastreabilidade-de-lote-por-qr-code">HU021 – Rastreabilidade de Lote por QR Code</h3>
+<p><strong>Título:</strong> Consulta de rastreabilidade do lote via QR Code
+<strong>História:</strong> COMO Douglas (e, indiretamente, a vigilância sanitária) GOSTARIA DE escanear o
+QR Code da etiqueta de um lote e ver toda a sua linha do tempo (insumo de origem, fornecedor, NF,
+etapas, pesagens, perdas, validade e destino de venda) POIS ASSIM atendo às exigências sanitárias
+e identifico rapidamente a origem de qualquer produto em caso de necessidade.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>Cada lote deve ter uma <strong>página de rastreabilidade</strong> acessível por QR Code.</li>
+<li>A página deve exibir a linha do tempo completa: entrada do insumo, fornecedor, NF, etapas com datas e pesos, perdas e validade.</li>
+<li>Deve indicar o <strong>status atual</strong> do lote (em produção, em estoque, vendido, descartado).</li>
+<li>Deve permitir exportar a rastreabilidade em PDF.</li>
+<li>O acesso à rastreabilidade interna completa deve exigir autenticação (dados sensíveis).</li>
+</ul>
+<h3 id="hu022-configurações-do-negócio-e-dos-alertas">HU022 – Configurações do Negócio e dos Alertas</h3>
+<p><strong>Título:</strong> Parametrização do sistema e preferências de alerta
+<strong>História:</strong> COMO Douglas (administrador) GOSTARIA DE configurar os parâmetros do negócio
+(dados da loja, categorias, alérgenos, prazos dos alertas de validade, canais de notificação e dias
+para pós-venda) num único lugar POIS ASSIM adapto o sistema à rotina da Mantovani sem depender de
+programador e mantenho regras consistentes em toda a plataforma.</p>
+<p><strong>Critérios de Aceite:</strong></p>
+<ul>
+<li>Deve permitir editar dados da empresa (nome, contato, endereço, redes sociais e link do cardápio).</li>
+<li>Deve permitir gerenciar as <strong>categorias</strong> de produto e a lista de <strong>alérgenos</strong>.</li>
+<li>Deve permitir configurar os marcos de alerta de validade (padrão 30/15/1 dia) e o prazo de pós-venda (padrão 5 dias).</li>
+<li>Deve permitir escolher os <strong>canais de notificação</strong> (push, e-mail, WhatsApp) por tipo de evento.</li>
+<li>Deve restringir essas configurações ao perfil <strong>Administrador</strong>.</li>
+</ul>
+
+<h1 id="requisitos-funcionais-derivados-das-histórias">5. Requisitos Funcionais (derivados das histórias)</h1>
+<p>Os requisitos RF001–RF035 derivam das histórias originais; <strong>RF036–RF046</strong> foram adicionados na
+Versão 2.0 (HU015–HU022).</p>
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 85%" />
+<col style="width: 9%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">Descrição</th>
+<th style="text-align: left;">Origem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">RF001</td>
+<td style="text-align: left;">Permitir o cadastro de produtos com nome, descrição, foto, categoria, ingredientes, tempo médio de produção, perda média e preço.</td>
+<td style="text-align: left;">HU001</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF002</td>
+<td style="text-align: left;">Permitir editar e desativar produtos preservando o histórico.</td>
+<td style="text-align: left;">HU001</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF003</td>
+<td style="text-align: left;">Permitir registrar a entrada de insumos (matéria-prima) com fornecedor, NF, peso e produto-destino.</td>
+<td style="text-align: left;">HU002</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF004</td>
+<td style="text-align: left;">Gerar automaticamente o número de lote no formato <code>AAA.NNN</code> (ano + sequencial).</td>
+<td style="text-align: left;">HU002</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF005</td>
+<td style="text-align: left;">Gerar etiqueta de lote (com QR Code) para impressão.</td>
+<td style="text-align: left;">HU002</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF006</td>
+<td style="text-align: left;">Permitir registrar pesagens em cada etapa da produção (limpeza, cura, defumação/maturação, embalagem).</td>
+<td style="text-align: left;">HU003</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF007</td>
+<td style="text-align: left;">Calcular automaticamente a perda absoluta (kg) e percentual (%) por etapa e total.</td>
+<td style="text-align: left;">HU003</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF008</td>
+<td style="text-align: left;">Emitir alerta visual quando a perda real divergir significativamente da perda média histórica.</td>
+<td style="text-align: left;">HU003</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF009</td>
+<td style="text-align: left;">Gerar relatórios mensais de produção por produto, com totais, perdas e número de lotes.</td>
+<td style="text-align: left;">HU004</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF010</td>
+<td style="text-align: left;">Permitir exportar relatórios em PDF e enviá-los por e-mail.</td>
+<td style="text-align: left;">HU004</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF011</td>
+<td style="text-align: left;">Disparar notificação push e/ou e-mail nos marcos de 30, 15 e 1 dia(s) antes do vencimento de cada lote.</td>
+<td style="text-align: left;">HU005</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF012</td>
+<td style="text-align: left;">Permitir gerar uma “lista de promoção” com lotes próximos do vencimento.</td>
+<td style="text-align: left;">HU005</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF013</td>
+<td style="text-align: left;">Permitir registrar descarte de produto vencido com motivo.</td>
+<td style="text-align: left;">HU005</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF014</td>
+<td style="text-align: left;">Disponibilizar um cardápio digital público com fotos, ingredientes, alérgenos e preço, com link compartilhável.</td>
+<td style="text-align: left;">HU006</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF015</td>
+<td style="text-align: left;">Permitir filtros por categoria e exclusão por alérgeno no cardápio.</td>
+<td style="text-align: left;">HU006</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF016</td>
+<td style="text-align: left;">Permitir adicionar produtos ao carrinho e fechar pedido pelo site.</td>
+<td style="text-align: left;">HU007</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF017</td>
+<td style="text-align: left;">Aceitar pagamento via Pix e cartão de crédito.</td>
+<td style="text-align: left;">HU007</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF018</td>
+<td style="text-align: left;">Oferecer entrega por motoboy (com cálculo por região) ou retirada na loja.</td>
+<td style="text-align: left;">HU007</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF019</td>
+<td style="text-align: left;">Enviar confirmação automática do pedido por e-mail e WhatsApp.</td>
+<td style="text-align: left;">HU007</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF020</td>
+<td style="text-align: left;">Baixar o estoque automaticamente ao confirmar o pedido.</td>
+<td style="text-align: left;">HU007, HU013</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF021</td>
+<td style="text-align: left;">Oferecer um bot de WhatsApp capaz de responder FAQ (preço, prazo, ingredientes, entrega, pagamento) com base no cardápio.</td>
+<td style="text-align: left;">HU008</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF022</td>
+<td style="text-align: left;">O bot deve transferir a conversa para um atendente humano ao sinalizar fechamento ou sair do escopo do FAQ.</td>
+<td style="text-align: left;">HU008</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF023</td>
+<td style="text-align: left;">Registrar conversas atendidas e gerar relatório de perguntas mais frequentes.</td>
+<td style="text-align: left;">HU008</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF024</td>
+<td style="text-align: left;">Disparar mensagem automática de pós-venda X dias após a entrega (X configurável).</td>
+<td style="text-align: left;">HU009</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF025</td>
+<td style="text-align: left;">Permitir registrar o feedback do cliente no perfil dele.</td>
+<td style="text-align: left;">HU009</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF026</td>
+<td style="text-align: left;">Oferecer planos de assinatura mensal (Essencial, Intermediário, Premium).</td>
+<td style="text-align: left;">HU010</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF027</td>
+<td style="text-align: left;">Realizar cobrança recorrente mensal por cartão de crédito.</td>
+<td style="text-align: left;">HU010</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF028</td>
+<td style="text-align: left;">Permitir ao assinante pausar, alterar ou cancelar a assinatura pelo painel do cliente.</td>
+<td style="text-align: left;">HU010</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF029</td>
+<td style="text-align: left;">Permitir cadastrar e exibir sugestões de harmonização por produto.</td>
+<td style="text-align: left;">HU011</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF030</td>
+<td style="text-align: left;">O site institucional deve apresentar páginas de história e processo, com texto, fotos e vídeos.</td>
+<td style="text-align: left;">HU012</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF031</td>
+<td style="text-align: left;">Exibir o estoque atual em tempo real, agrupado por produto e detalhado por lote.</td>
+<td style="text-align: left;">HU013</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF032</td>
+<td style="text-align: left;">Permitir lançamento manual de baixa de estoque (descarte, consumo interno).</td>
+<td style="text-align: left;">HU013</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF033</td>
+<td style="text-align: left;">Ser disponibilizado como PWA, com manifest, service worker, ícone e splash screen.</td>
+<td style="text-align: left;">HU014</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF034</td>
+<td style="text-align: left;">Manter cache offline do cardápio digital já visitado, permitindo consulta sem conexão.</td>
+<td style="text-align: left;">HU014</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF035</td>
+<td style="text-align: left;">Suportar notificações push via Web Push para usuários que concederem autorização.</td>
+<td style="text-align: left;">HU014, HU005</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF036</td>
+<td style="text-align: left;">Permitir autenticação por e-mail/senha, com sessão persistente e recuperação de senha.</td>
+<td style="text-align: left;">HU015</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF037</td>
+<td style="text-align: left;">Implementar perfis de acesso (Administrador, Gestor, Produção) com permissões distintas.</td>
+<td style="text-align: left;">HU015</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF038</td>
+<td style="text-align: left;">Permitir definir a duração de cada etapa por produto e calcular a data prevista de conclusão do lote.</td>
+<td style="text-align: left;">HU016</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF039</td>
+<td style="text-align: left;">Gerar alerta de produção quando um lote atingir a data prevista de mudança de etapa ou estiver atrasado.</td>
+<td style="text-align: left;">HU016</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF040</td>
+<td style="text-align: left;">Manter agenda de maturação e calcular regressivamente a data-limite de início a partir de datas-alvo.</td>
+<td style="text-align: left;">HU016</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF041</td>
+<td style="text-align: left;">Apresentar dashboard-resumo do mês com indicadores de produção, perdas, lotes, validades e pedidos.</td>
+<td style="text-align: left;">HU017</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF042</td>
+<td style="text-align: left;">Permitir o cadastro e a gestão de clientes PF/PJ, com histórico de pedidos e feedback.</td>
+<td style="text-align: left;">HU018</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF043</td>
+<td style="text-align: left;">Gerenciar pedidos em quadro kanban por status, registrando o histórico de transições.</td>
+<td style="text-align: left;">HU019</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF044</td>
+<td style="text-align: left;">Oferecer catálogo com tabela de preços de atacado e disponibilidade para clientes PJ autenticados.</td>
+<td style="text-align: left;">HU020</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF045</td>
+<td style="text-align: left;">Disponibilizar página de rastreabilidade de lote por QR Code, com linha do tempo e exportação em PDF.</td>
+<td style="text-align: left;">HU021</td>
+</tr>
+<tr>
+<td style="text-align: left;">RF046</td>
+<td style="text-align: left;">Oferecer tela de configurações do negócio (empresa, categorias, alérgenos, alertas, canais), restrita ao Administrador.</td>
+<td style="text-align: left;">HU022</td>
+</tr>
+</tbody>
+</table>
+<h1 id="regras-de-negócio-rn">6. Regras de Negócio (RN)</h1>
+<p>As regras RN001–RN013 são do levantamento original; <strong>RN014–RN017</strong> foram adicionadas na Versão 2.0.</p>
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 81%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">Descrição</th>
+<th style="text-align: left;">Relacionado a</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">RN001</td>
+<td style="text-align: left;">A numeração de lote segue o formato <code>AAA.NNN</code>, onde <code>AAA</code> são os três últimos dígitos do ano corrente e <code>NNN</code> é sequencial e único por produto.</td>
+<td style="text-align: left;">HU002</td>
+</tr>
+<tr>
+<td style="text-align: left;">RN002</td>
+<td style="text-align: left;">Cada lote pertence a um único produto-destino e mantém o mesmo número da entrada da matéria-prima até a embalagem final.</td>
+<td style="text-align: left;">HU002, HU003</td>
+</tr>
+<tr>
+<td style="text-align: left;">RN003</td>
+<td style="text-align: left;">O lote do fornecedor é distinto do lote interno da Mantovani, mas deve ser registrado para fins de rastreabilidade sanitária.</td>
+<td style="text-align: left;">HU002</td>
+</tr>
+<tr>
+<td style="text-align: left;">RN004</td>
+<td style="text-align: left;">O percentual de perda real é específico de cada lote e não deve ser usado como valor fixo — a perda média do produto serve apenas como referência.</td>
+<td style="text-align: left;">HU003</td>
+</tr>
+<tr>
+<td style="text-align: left;">RN005</td>
+<td style="text-align: left;">Um produto só fica disponível para venda no cardápio e no site após o registro do peso final do lote (etapa “embalagem concluída”).</td>
+<td style="text-align: left;">HU003, HU006, HU013</td>
+</tr>
+<tr>
+<td style="text-align: left;">RN006</td>
+<td style="text-align: left;">A validade do produto começa a contar a partir da data de finalização do lote, não da data de entrada da matéria-prima.</td>
+<td style="text-align: left;">HU005</td>
+</tr>
+<tr>
+<td style="text-align: left;">RN007</td>
+<td style="text-align: left;">Lotes com validade vencida são automaticamente removidos do estoque vendável e marcados para descarte.</td>
+<td style="text-align: left;">HU005, HU013</td>
+</tr>
+<tr>
+<td style="text-align: left;">RN008</td>
+<td style="text-align: left;">O pagamento das vendas a clientes pessoa física com entrega é antecipado (Pix antes do envio do motoboy).</td>
+<td style="text-align: left;">HU007</td>
+</tr>
+<tr>
+<td style="text-align: left;">RN009</td>
+<td style="text-align: left;">O bot de atendimento deve sempre se identificar como atendimento automatizado na primeira mensagem da conversa.</td>
+<td style="text-align: left;">HU008</td>
+</tr>
+<tr>
+<td style="text-align: left;">RN010</td>
+<td style="text-align: left;">Conversas com intenção de fechamento de compra devem obrigatoriamente ser transferidas para atendente humano antes da confirmação do pagamento.</td>
+<td style="text-align: left;">HU008</td>
+</tr>
+<tr>
+<td style="text-align: left;">RN011</td>
+<td style="text-align: left;">Os planos do clube de assinatura devem respeitar o tempo de produção dos produtos: itens de produção longa só entram em ciclos planejados com antecedência.</td>
+<td style="text-align: left;">HU010</td>
+</tr>
+<tr>
+<td style="text-align: left;">RN012</td>
+<td style="text-align: left;">Clientes pessoa jurídica podem ter tabela de preços diferenciada (volume) em relação a clientes pessoa física.</td>
+<td style="text-align: left;">HU007</td>
+</tr>
+<tr>
+<td style="text-align: left;">RN013</td>
+<td style="text-align: left;">Vendas para outros estados dependem de autorização sanitária — o sistema deve permitir marcar quais produtos podem ser comercializados fora de MG e bloquear os demais nesses pedidos.</td>
+<td style="text-align: left;">HU007</td>
+</tr>
+<tr>
+<td style="text-align: left;">RN014</td>
+<td style="text-align: left;">Cada usuário possui um único perfil de acesso; operações sensíveis (exclusão, configurações e preços de custo) são restritas ao perfil Administrador.</td>
+<td style="text-align: left;">HU015</td>
+</tr>
+<tr>
+<td style="text-align: left;">RN015</td>
+<td style="text-align: left;">A data-limite para iniciar a produção de um item é calculada como (data-alvo − soma das durações das etapas − margem de segurança), específica por produto.</td>
+<td style="text-align: left;">HU016</td>
+</tr>
+<tr>
+<td style="text-align: left;">RN016</td>
+<td style="text-align: left;">Clientes PJ visualizam a tabela de preços de atacado; clientes PF visualizam a tabela de varejo (reforça a RN012).</td>
+<td style="text-align: left;">HU020</td>
+</tr>
+<tr>
+<td style="text-align: left;">RN017</td>
+<td style="text-align: left;">A baixa de estoque na confirmação de um pedido segue a regra <strong>FEFO</strong> (<em>First Expired, First Out</em>) entre os lotes disponíveis do produto.</td>
+<td style="text-align: left;">HU019, HU007, HU013</td>
+</tr>
+</tbody>
+</table>
+<h1 id="requisitos-não-funcionais-rnf">7. Requisitos Não Funcionais (RNF)</h1>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 12%" />
+<col style="width: 50%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">Categoria</th>
+<th style="text-align: left;">Descrição</th>
+<th style="text-align: left;">Métrica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">RNF001</td>
+<td style="text-align: left;">Usabilidade</td>
+<td style="text-align: left;">A interface deve ser mobile-first, otimizada para smartphone.</td>
+<td style="text-align: left;">Telas operacionais funcionam a partir de 360 px de largura.</td>
+</tr>
+<tr>
+<td style="text-align: left;">RNF002</td>
+<td style="text-align: left;">Usabilidade</td>
+<td style="text-align: left;">Cadastros operacionais devem ser concluídos com poucos toques.</td>
+<td style="text-align: left;">Cada apontamento exige ≤ 5 interações.</td>
+</tr>
+<tr>
+<td style="text-align: left;">RNF003</td>
+<td style="text-align: left;">Desempenho</td>
+<td style="text-align: left;">O cardápio e o site devem carregar rapidamente no celular, mesmo em 3G/4G.</td>
+<td style="text-align: left;">Primeira página ≤ 3 s em 4G.</td>
+</tr>
+<tr>
+<td style="text-align: left;">RNF004</td>
+<td style="text-align: left;">Desempenho</td>
+<td style="text-align: left;">Operações administrativas devem ter resposta praticamente instantânea.</td>
+<td style="text-align: left;">Tempo de resposta ≤ 2 s.</td>
+</tr>
+<tr>
+<td style="text-align: left;">RNF005</td>
+<td style="text-align: left;">Disponibilidade</td>
+<td style="text-align: left;">O sistema deve estar disponível 24×7 para clientes finais.</td>
+<td style="text-align: left;">Disponibilidade ≥ 99% ao mês.</td>
+</tr>
+<tr>
+<td style="text-align: left;">RNF006</td>
+<td style="text-align: left;">Segurança</td>
+<td style="text-align: left;">Pagamentos online por gateway certificado, sem armazenar dados de cartão.</td>
+<td style="text-align: left;">Conformidade PCI-DSS via gateway (Stone, Pagar.me, Mercado Pago).</td>
+</tr>
+<tr>
+<td style="text-align: left;">RNF007</td>
+<td style="text-align: left;">Segurança</td>
+<td style="text-align: left;">Acesso ao painel deve exigir senha forte e suportar 2FA.</td>
+<td style="text-align: left;">Senha ≥ 8 caracteres (letras, números, símbolos); 2FA opcional.</td>
+</tr>
+<tr>
+<td style="text-align: left;">RNF008</td>
+<td style="text-align: left;">Segurança</td>
+<td style="text-align: left;">Dados pessoais devem ser tratados conforme a LGPD.</td>
+<td style="text-align: left;">Conformidade com a LGPD (Lei 13.709/2018).</td>
+</tr>
+<tr>
+<td style="text-align: left;">RNF009</td>
+<td style="text-align: left;">Confiabilidade</td>
+<td style="text-align: left;">Backups diários da base de dados, mantidos por ≥ 30 dias.</td>
+<td style="text-align: left;">Backup automático diário; retenção ≥ 30 dias.</td>
+</tr>
+<tr>
+<td style="text-align: left;">RNF010</td>
+<td style="text-align: left;">Compatibilidade</td>
+<td style="text-align: left;">Funcionar nos principais navegadores em desktop e mobile.</td>
+<td style="text-align: left;">Versões dos últimos 24 meses (Chrome, Safari, Firefox, Edge).</td>
+</tr>
+<tr>
+<td style="text-align: left;">RNF011</td>
+<td style="text-align: left;">Manutenibilidade</td>
+<td style="text-align: left;">Código modular, evoluindo cada frente sem regressões.</td>
+<td style="text-align: left;">Arquitetura modular; cobertura de testes ≥ 70% em produção/estoque.</td>
+</tr>
+<tr>
+<td style="text-align: left;">RNF012</td>
+<td style="text-align: left;">Integração</td>
+<td style="text-align: left;">Integração com a API do WhatsApp Business para bot e pós-venda.</td>
+<td style="text-align: left;">Uso oficial da WhatsApp Business API (Meta).</td>
+</tr>
+<tr>
+<td style="text-align: left;">RNF013</td>
+<td style="text-align: left;">Integração</td>
+<td style="text-align: left;">Integração futura com o Bling para sincronização fiscal/administrativa.</td>
+<td style="text-align: left;">Conector/exportação compatível com a API do Bling.</td>
+</tr>
+<tr>
+<td style="text-align: left;">RNF014</td>
+<td style="text-align: left;">Notificação</td>
+<td style="text-align: left;">Notificações por push, e-mail e WhatsApp, conforme preferência do usuário.</td>
+<td style="text-align: left;">Múltiplos canais configuráveis por usuário.</td>
+</tr>
+<tr>
+<td style="text-align: left;">RNF015</td>
+<td style="text-align: left;">Acessibilidade</td>
+<td style="text-align: left;">Cardápio e site devem seguir boas práticas de acessibilidade.</td>
+<td style="text-align: left;">Conformidade WCAG 2.1 nível AA.</td>
+</tr>
+<tr>
+<td style="text-align: left;">RNF016</td>
+<td style="text-align: left;">PWA</td>
+<td style="text-align: left;">Entregue como PWA instalável, com uso offline parcial e push.</td>
+<td style="text-align: left;">Manifest válido, service worker e Lighthouse PWA ≥ 90.</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="modelo-de-banco-de-dados">8. Modelo de Banco de Dados</h1>
+<p>O banco de dados do MantovaniHub foi implementado em PostgreSQL (compatível com a plataforma Supabase, usada no deploy). Esta seção apresenta o modelo lógico (entidades e relacionamentos), o diagrama entidade-relacionamento e o modelo físico (script SQL de criação das tabelas). O modelo não apenas armazena os dados, mas materializa as regras de negócio do domínio: a geração do código de lote <code>AAA.NNN</code> (RN001), o cálculo automático de perdas (RF007), o semáforo de validade (HU005) e a regra FEFO de baixa de estoque (RN017).</p>
+<h2 id="visão-geral-e-domínios">8.1 Visão Geral e Domínios</h2>
+<p>O modelo é composto por 22 tabelas, 2 visões e 2 funções/gatilhos, organizados em sete domínios funcionais:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Domínio</th>
+<th>Tabelas</th>
+<th>Histórias atendidas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Acesso e usuários</td>
+<td><code>perfis</code></td>
+<td>HU015</td>
+</tr>
+<tr>
+<td>Catálogo de produtos</td>
+<td><code>categorias</code>, <code>alergenos</code>, <code>produtos</code>, <code>produto_alergenos</code>, <code>produto_etapas</code>, <code>harmonizacoes</code></td>
+<td>HU001, HU006, HU011, HU022</td>
+</tr>
+<tr>
+<td>Suprimentos e produção</td>
+<td><code>fornecedores</code>, <code>insumos_entrada</code>, <code>lotes</code>, <code>lote_etapas</code></td>
+<td>HU002, HU003, HU016, HU021</td>
+</tr>
+<tr>
+<td>Estoque e alertas</td>
+<td><code>estoque_movimentos</code>, <code>alertas</code>, <code>datas_alvo</code></td>
+<td>HU005, HU013, HU016</td>
+</tr>
+<tr>
+<td>Clientes e vendas</td>
+<td><code>clientes</code>, <code>cliente_feedback</code>, <code>pedidos</code>, <code>pedido_itens</code>, <code>pedido_status_hist</code></td>
+<td>HU007, HU009, HU018, HU019, HU020</td>
+</tr>
+<tr>
+<td>Clube de assinatura</td>
+<td><code>planos_assinatura</code>, <code>assinaturas</code></td>
+<td>HU010</td>
+</tr>
+<tr>
+<td>Configuração</td>
+<td><code>config_negocio</code></td>
+<td>HU022</td>
+</tr>
+</tbody>
+</table>
+<h2 id="modelo-lógico-principais-relacionamentos">8.2 Modelo Lógico — Principais Relacionamentos</h2>
+<ul>
+<li>Cada <strong>produto</strong> pertence a uma <strong>categoria</strong> e pode estar associado a vários <strong>alérgenos</strong> (relação N:N via <code>produto_alergenos</code>), a um <strong>roteiro de etapas</strong> (<code>produto_etapas</code>, que define as durações para a agenda de maturação) e a várias <strong>harmonizações</strong> (“Combina com…”).</li>
+<li>A <strong>entrada de insumo</strong> (<code>insumos_entrada</code>) registra a matéria-prima recebida de um <strong>fornecedor</strong> e dá origem a um <strong>lote</strong> interno. Cada <strong>lote</strong> referencia um único produto-destino (RN002) e desdobra-se em várias <strong>etapas de produção</strong> (<code>lote_etapas</code>), nas quais as pesagens são registradas e as perdas calculadas.</li>
+<li>O <strong>estoque</strong> é um livro-razão de <strong>movimentos</strong> (<code>estoque_movimentos</code>) vinculados ao lote; o saldo disponível é materializado em <code>lotes.peso_disponivel_kg</code>. Os <strong>alertas</strong> (validade, produção, desvio de perda) referenciam o lote ou o produto de origem.</li>
+<li>Um <strong>cliente</strong> (PF ou PJ) faz vários <strong>pedidos</strong>, cada um com vários <strong>itens</strong> (<code>pedido_itens</code>); cada item pode ser separado de um <strong>lote</strong> específico (FEFO). As transições de status do pedido são registradas em <code>pedido_status_hist</code>, e os <strong>feedbacks</strong> ficam vinculados ao cliente e ao pedido.</li>
+<li>Os <strong>planos de assinatura</strong> podem ser contratados por clientes em <strong>assinaturas</strong>. A tabela <code>config_negocio</code> (registro único) centraliza os parâmetros do sistema (HU022).</li>
+</ul>
+<h2 id="dicionário-de-dados-resumo-das-entidades">8.3 Dicionário de Dados (resumo das entidades)</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Entidade</th>
+<th>Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>perfis</code></td>
+<td>Usuários administrativos com papel de acesso (admin/gestor/produção).</td>
+</tr>
+<tr>
+<td><code>categorias</code></td>
+<td>Categorias do cardápio (Defumados, Maturados, Curados, Linguiças…).</td>
+</tr>
+<tr>
+<td><code>alergenos</code></td>
+<td>Alérgenos cadastráveis (glúten, lactose, pimenta…).</td>
+</tr>
+<tr>
+<td><code>produtos</code></td>
+<td>Ficha técnica: nome, ingredientes, foto, unidade, preços varejo/atacado, perda média.</td>
+</tr>
+<tr>
+<td><code>produto_etapas</code></td>
+<td>Roteiro de produção por produto (etapas e durações).</td>
+</tr>
+<tr>
+<td><code>harmonizacoes</code></td>
+<td>Sugestões de harmonização (vinho, queijo, pão, cerveja).</td>
+</tr>
+<tr>
+<td><code>fornecedores</code></td>
+<td>Fornecedores de matéria-prima.</td>
+</tr>
+<tr>
+<td><code>insumos_entrada</code></td>
+<td>Recebimento de matéria-prima; origem do lote.</td>
+</tr>
+<tr>
+<td><code>lotes</code></td>
+<td>Lote interno <code>AAA.NNN</code>, com pesos, perdas calculadas, validade e status.</td>
+</tr>
+<tr>
+<td><code>lote_etapas</code></td>
+<td>Pesagens por etapa, com perda kg/% e datas prevista/concluída.</td>
+</tr>
+<tr>
+<td><code>estoque_movimentos</code></td>
+<td>Livro-razão de entradas e saídas de estoque.</td>
+</tr>
+<tr>
+<td><code>alertas</code></td>
+<td>Alertas de validade, produção e desvio de perda.</td>
+</tr>
+<tr>
+<td><code>datas_alvo</code></td>
+<td>Datas comemorativas para o cálculo regressivo de produção.</td>
+</tr>
+<tr>
+<td><code>clientes</code></td>
+<td>Clientes PF/PJ, com tabela de preço aplicável.</td>
+</tr>
+<tr>
+<td><code>pedidos</code> / <code>pedido_itens</code></td>
+<td>Pedidos e seus itens; baixa de estoque por FEFO.</td>
+</tr>
+<tr>
+<td><code>pedido_status_hist</code></td>
+<td>Histórico de transições de status (kanban).</td>
+</tr>
+<tr>
+<td><code>planos_assinatura</code> / <code>assinaturas</code></td>
+<td>Clube de assinatura e contratos.</td>
+</tr>
+<tr>
+<td><code>config_negocio</code></td>
+<td>Parâmetros do negócio e preferências de alerta.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="regras-de-negócio-materializadas-no-banco">8.4 Regras de Negócio Materializadas no Banco</h2>
+<ul>
+<li><strong>Geração do código de lote (RN001):</strong> o gatilho <code>trg_gerar_codigo_lote</code> executa a função <code>fn_gerar_codigo_lote()</code>, que monta <code>AAA.NNN</code> a partir dos três últimos dígitos do ano e de um sequencial único por produto/ano.</li>
+<li><strong>Cálculo de perdas (RF007):</strong> as colunas <code>perda_total_kg</code>, <code>perda_total_pct</code> (em <code>lotes</code>) e <code>perda_kg</code>, <code>perda_pct</code> (em <code>lote_etapas</code>) são colunas geradas (<code>GENERATED ALWAYS AS … STORED</code>), garantindo consistência sem código de aplicação.</li>
+<li><strong>Lote → estoque (RN005):</strong> ao mudar o status do lote para <code>em_estoque</code>, o gatilho <code>trg_lote_para_estoque</code> inicializa o saldo disponível e registra o movimento de entrada.</li>
+<li><strong>Estoque em tempo real e semáforo de validade (HU005/HU013):</strong> a visão <code>vw_estoque_atual</code> classifica cada lote em verde / amarelo (≤ 30 dias) / vermelho (≤ 7 dias) / vencido.</li>
+<li><strong>Produção mensal (HU004/HU017):</strong> a visão <code>vw_producao_mensal</code> consolida, por produto e mês, o total produzido, o total perdido, a perda média e o número de lotes.</li>
+</ul>
+<h2 id="modelo-lógico-diagrama-entidade-relacionamento">8.5 Modelo Lógico — Diagrama Entidade-Relacionamento</h2>
+<p>A figura a seguir apresenta o modelo entidade-relacionamento completo, com as chaves primárias (PK), estrangeiras (FK) e os principais atributos de cada entidade.</p>
+<div class="figura figura-landscape">
+<img src="assets/er-diagram.png" alt="Diagrama Entidade-Relacionamento do MantovaniHub">
+<div class="legenda">
+Figura 1. Diagrama Entidade-Relacionamento do MantovaniHub (PostgreSQL).
+</div>
+</div>
+<h2 id="modelo-físico-script-sql-de-criação-das-tabelas">8.6 Modelo Físico — Script SQL de Criação das Tabelas</h2>
+<p>O script a seguir cria todo o modelo no PostgreSQL (validado em ambiente PostgreSQL real). Inclui extensões, tipos enumerados, tabelas, restrições de integridade, funções, gatilhos, visões e índices.</p>
+
+<pre class="sql"><code>-- =====================================================================
+--  MantovaniHub — Plataforma de Gestão Integrada para Charcutaria
+--  Modelo Físico do Banco de Dados (PostgreSQL / Supabase)
+--  Projeto: Charcutaria Mantovani — UC Modelagem de Software 2026/1
+--  Versão: 2.0
+--
+--  Convenções:
+--   * Chaves primárias: uuid (gen_random_uuid()).
+--   * Pesos em quilogramas: numeric(10,3). Preços em reais: numeric(10,2).
+--   * Nomes de tabelas e colunas em português (domínio da charcutaria).
+--   * Perdas calculadas por colunas GENERATED para garantir consistência.
+-- =====================================================================
+
+create extension if not exists &quot;pgcrypto&quot;;   -- gen_random_uuid()
+
+-- ---------------------------------------------------------------------
+-- 1. TIPOS ENUMERADOS (domínio controlado)
+-- ---------------------------------------------------------------------
+create type papel_usuario     as enum (&#39;admin&#39;, &#39;gestor&#39;, &#39;producao&#39;);
+create type unidade_venda      as enum (&#39;kg&#39;, &#39;100g&#39;, &#39;500g&#39;, &#39;unidade&#39;);
+create type tipo_insumo        as enum (&#39;carne&#39;, &#39;peixe&#39;, &#39;outro&#39;);
+create type status_lote        as enum (&#39;em_producao&#39;, &#39;pronto&#39;, &#39;em_estoque&#39;, &#39;vendido&#39;, &#39;descartado&#39;);
+create type tipo_movimento     as enum (&#39;entrada&#39;, &#39;venda&#39;, &#39;baixa_manual&#39;, &#39;descarte&#39;, &#39;ajuste&#39;);
+create type tipo_alerta        as enum (&#39;validade&#39;, &#39;producao&#39;, &#39;estoque_baixo&#39;, &#39;desvio_perda&#39;);
+create type severidade_alerta  as enum (&#39;info&#39;, &#39;atencao&#39;, &#39;critico&#39;);
+create type tipo_cliente       as enum (&#39;pf&#39;, &#39;pj&#39;);
+create type tabela_preco       as enum (&#39;varejo&#39;, &#39;atacado&#39;);
+create type canal_pedido       as enum (&#39;site&#39;, &#39;whatsapp&#39;, &#39;balcao&#39;);
+create type status_pedido      as enum (&#39;recebido&#39;, &#39;separacao&#39;, &#39;pronto&#39;, &#39;entregue&#39;, &#39;cancelado&#39;);
+create type tipo_entrega       as enum (&#39;motoboy&#39;, &#39;retirada&#39;);
+create type forma_pagamento    as enum (&#39;pix&#39;, &#39;cartao&#39;, &#39;dinheiro&#39;);
+create type tipo_harmonizacao  as enum (&#39;vinho&#39;, &#39;queijo&#39;, &#39;pao&#39;, &#39;cerveja&#39;, &#39;outro&#39;);
+
+-- ---------------------------------------------------------------------
+-- 2. ACESSO E USUÁRIOS  (HU015 / RF036 / RF037 / RN014)
+--    Integra-se ao Supabase Auth (auth.users). Cada perfil estende um
+--    usuário autenticado com seu papel no sistema.
+-- ---------------------------------------------------------------------
+create table perfis (
+    id            uuid primary key references auth.users(id) on delete cascade,
+    nome          text          not null,
+    papel         papel_usuario not null default &#39;producao&#39;,
+    telefone      text,
+    ativo         boolean       not null default true,
+    ultimo_acesso timestamptz,
+    criado_em     timestamptz   not null default now()
+);
+comment on table perfis is &#39;Usuários administrativos (Douglas, esposa, produção) com papel de acesso.&#39;;
+
+-- ---------------------------------------------------------------------
+-- 3. CATÁLOGO DE PRODUTOS  (HU001 / HU006 / HU011 / HU021 / HU022)
+-- ---------------------------------------------------------------------
+create table categorias (
+    id        uuid primary key default gen_random_uuid(),
+    nome      text    not null unique,
+    slug      text    not null unique,
+    ordem     int     not null default 0,
+    ativo     boolean not null default true
+);
+comment on table categorias is &#39;Categorias do cardápio: Defumados, Maturados, Curados, Linguiças, Assados, Fermentados, Tábua de frios, etc.&#39;;
+
+create table alergenos (
+    id    uuid primary key default gen_random_uuid(),
+    nome  text not null unique           -- Glúten, Lactose, Pimenta, Crustáceos...
+);
+
+create table produtos (
+    id                  uuid primary key default gen_random_uuid(),
+    categoria_id        uuid not null references categorias(id),
+    nome                text not null,
+    slug                text not null unique,
+    descricao           text,
+    ficha_tecnica       text,                              -- modo de produção / curiosidades
+    ingredientes        text[] not null default &#39;{}&#39;,      -- lista de ingredientes
+    foto_url            text,
+    unidade_venda       unidade_venda not null default &#39;100g&#39;,
+    preco_varejo        numeric(10,2) not null default 0,
+    preco_atacado       numeric(10,2),                     -- tabela PJ (RN012/RN016)
+    tempo_producao_dias int  not null default 1,           -- HU001
+    perda_media_pct     numeric(5,2) not null default 0
+                        check (perda_media_pct between 0 and 100),  -- HU001
+    disponivel_fora_mg  boolean not null default false,    -- RN013
+    sazonal             boolean not null default false,
+    ativo               boolean not null default true,     -- desativar sem excluir (HU001)
+    criado_em           timestamptz not null default now()
+);
+comment on column produtos.perda_media_pct is &#39;Perda média histórica (referência, não valor fixo — RN004).&#39;;
+
+-- N:N produto &lt;-&gt; alérgeno
+create table produto_alergenos (
+    produto_id  uuid not null references produtos(id) on delete cascade,
+    alergeno_id uuid not null references alergenos(id) on delete cascade,
+    primary key (produto_id, alergeno_id)
+);
+
+-- Roteiro de produção por produto: durações de cada etapa (HU016 / RF038)
+create table produto_etapas (
+    id           uuid primary key default gen_random_uuid(),
+    produto_id   uuid not null references produtos(id) on delete cascade,
+    ordem        int  not null,
+    nome_etapa   text not null,            -- Limpeza, Cura, Defumação, Maturação, Embalagem
+    duracao_dias int  not null default 0,
+    unique (produto_id, ordem)
+);
+
+-- Sugestões de harmonização &quot;Combina com...&quot; (HU011 / RF029)
+create table harmonizacoes (
+    id            uuid primary key default gen_random_uuid(),
+    produto_id    uuid not null references produtos(id) on delete cascade,
+    tipo          tipo_harmonizacao not null,
+    nome          text not null,           -- &quot;Vinho Malbec&quot;, &quot;Queijo Canastra&quot;, &quot;Pão sourdough&quot;
+    descricao     text,
+    foto_url      text
+);
+
+-- ---------------------------------------------------------------------
+-- 4. SUPRIMENTOS E PRODUÇÃO  (HU002 / HU003 / RF003-RF008 / RN001-RN006)
+-- ---------------------------------------------------------------------
+create table fornecedores (
+    id       uuid primary key default gen_random_uuid(),
+    nome     text not null,
+    contato  text,
+    cidade   text,
+    uf       char(2)
+);
+
+-- Entrada de matéria-prima → origem do lote (HU002)
+create table insumos_entrada (
+    id                 uuid primary key default gen_random_uuid(),
+    fornecedor_id      uuid references fornecedores(id),
+    produto_destino_id uuid not null references produtos(id),
+    tipo_insumo        tipo_insumo not null default &#39;carne&#39;,
+    nf_numero          text,
+    lote_fornecedor    text,                       -- distinto do lote interno (RN003)
+    peso_recebido_kg   numeric(10,3) not null check (peso_recebido_kg &gt; 0),
+    data_entrada       date not null default current_date,
+    foto_nf_url        text,
+    observacao         text,
+    criado_em          timestamptz not null default now()
+);
+
+-- Lote interno (rastreabilidade AAA.NNN) — RN001/RN002
+create table lotes (
+    id                  uuid primary key default gen_random_uuid(),
+    codigo              text,                        -- AAA.NNN, sequencial por produto/ano (RN001), ex.: 026.015
+    ano                 int,
+    sequencial          int,
+    produto_id          uuid not null references produtos(id),
+    insumo_entrada_id   uuid references insumos_entrada(id),
+    peso_recebido_kg    numeric(10,3) not null check (peso_recebido_kg &gt; 0),
+    peso_apos_limpeza_kg numeric(10,3),
+    peso_final_kg       numeric(10,3),
+    -- Perdas calculadas automaticamente (RF007):
+    perda_total_kg  numeric(10,3) generated always as
+        (case when peso_final_kg is not null then peso_recebido_kg - peso_final_kg end) stored,
+    perda_total_pct numeric(6,2) generated always as
+        (case when peso_final_kg is not null and peso_recebido_kg &gt; 0
+              then round((peso_recebido_kg - peso_final_kg) / peso_recebido_kg * 100, 2) end) stored,
+    peso_disponivel_kg  numeric(10,3) not null default 0,   -- saldo em estoque (FEFO)
+    status              status_lote not null default &#39;em_producao&#39;,
+    data_abertura       date not null default current_date,
+    data_conclusao      date,                        -- validade conta a partir daqui (RN006)
+    data_validade       date,
+    created_by          uuid references perfis(id),
+    criado_em           timestamptz not null default now(),
+    unique (produto_id, ano, sequencial)
+);
+comment on table lotes is &#39;Lote interno com rastreabilidade do insumo ao produto final (RN002).&#39;;
+
+-- Apontamento real das etapas + pesagens (HU003 / RF006) e datas previstas (HU016)
+create table lote_etapas (
+    id             uuid primary key default gen_random_uuid(),
+    lote_id        uuid not null references lotes(id) on delete cascade,
+    ordem          int  not null,
+    nome_etapa     text not null,
+    peso_entrada_kg numeric(10,3),
+    peso_saida_kg   numeric(10,3),
+    perda_kg  numeric(10,3) generated always as
+        (case when peso_entrada_kg is not null and peso_saida_kg is not null
+              then peso_entrada_kg - peso_saida_kg end) stored,
+    perda_pct numeric(6,2) generated always as
+        (case when peso_entrada_kg is not null and peso_saida_kg is not null and peso_entrada_kg &gt; 0
+              then round((peso_entrada_kg - peso_saida_kg) / peso_entrada_kg * 100, 2) end) stored,
+    data_prevista  date,                 -- agenda de maturação (HU016)
+    data_concluida date,
+    concluida      boolean not null default false,
+    observacao     text,
+    unique (lote_id, ordem)
+);
+
+-- ---------------------------------------------------------------------
+-- 5. ESTOQUE — livro-razão de movimentos (HU013 / RF031 / RF032)
+-- ---------------------------------------------------------------------
+create table estoque_movimentos (
+    id           uuid primary key default gen_random_uuid(),
+    lote_id      uuid not null references lotes(id),
+    tipo         tipo_movimento not null,
+    quantidade_kg numeric(10,3) not null,       -- positivo entrada, negativo saída
+    motivo       text,
+    pedido_id    uuid,                            -- FK lógica p/ pedidos (saída por venda)
+    created_by   uuid references perfis(id),
+    criado_em    timestamptz not null default now()
+);
+comment on table estoque_movimentos is &#39;Histórico de entradas/saídas; o saldo materializado fica em lotes.peso_disponivel_kg.&#39;;
+
+-- ---------------------------------------------------------------------
+-- 6. ALERTAS E AGENDA DE PRODUÇÃO  (HU005 / HU016 / RF011 / RF039 / RF040)
+-- ---------------------------------------------------------------------
+create table alertas (
+    id              uuid primary key default gen_random_uuid(),
+    tipo            tipo_alerta not null,
+    severidade      severidade_alerta not null default &#39;info&#39;,
+    titulo          text not null,
+    mensagem        text,
+    lote_id         uuid references lotes(id) on delete cascade,
+    produto_id      uuid references produtos(id) on delete cascade,
+    data_referencia date,
+    lido            boolean not null default false,
+    resolvido       boolean not null default false,
+    criado_em       timestamptz not null default now()
+);
+
+-- Datas comemorativas para cálculo regressivo de início de produção (HU016 / RN015)
+create table datas_alvo (
+    id        uuid primary key default gen_random_uuid(),
+    nome      text not null,                 -- &quot;Natal 2026&quot;, &quot;Dia das Mães&quot;
+    data_alvo date not null,
+    descricao text
+);
+
+-- ---------------------------------------------------------------------
+-- 7. CLIENTES (CRM)  (HU018 / RF042 / RN012)
+-- ---------------------------------------------------------------------
+create table clientes (
+    id           uuid primary key default gen_random_uuid(),
+    tipo         tipo_cliente not null default &#39;pf&#39;,
+    nome         text not null,
+    razao_social text,
+    cnpj_cpf     text,
+    telefone     text,
+    email        text,
+    endereco     text,
+    cidade       text,
+    uf           char(2),
+    tabela_preco tabela_preco not null default &#39;varejo&#39;,   -- RN016
+    observacoes  text,
+    criado_em    timestamptz not null default now()
+);
+
+create table cliente_feedback (
+    id         uuid primary key default gen_random_uuid(),
+    cliente_id uuid not null references clientes(id) on delete cascade,
+    pedido_id  uuid,
+    nota       int check (nota between 1 and 5),
+    comentario text,
+    criado_em  timestamptz not null default now()
+);
+
+-- ---------------------------------------------------------------------
+-- 8. PEDIDOS E VENDAS  (HU007 / HU019 / HU020 / RF016-RF020 / RF043 / RN017)
+-- ---------------------------------------------------------------------
+create table pedidos (
+    id              uuid primary key default gen_random_uuid(),
+    numero          serial unique,
+    cliente_id      uuid references clientes(id),
+    canal           canal_pedido not null default &#39;site&#39;,
+    status          status_pedido not null default &#39;recebido&#39;,
+    tipo_entrega    tipo_entrega not null default &#39;retirada&#39;,
+    endereco_entrega text,
+    valor_produtos  numeric(10,2) not null default 0,
+    valor_entrega   numeric(10,2) not null default 0,
+    valor_total     numeric(10,2) generated always as (valor_produtos + valor_entrega) stored,
+    forma_pagamento forma_pagamento,
+    pago            boolean not null default false,
+    recorrente      boolean not null default false,        -- pedido recorrente PJ (HU020)
+    observacao      text,
+    criado_em       timestamptz not null default now()
+);
+
+create table pedido_itens (
+    id            uuid primary key default gen_random_uuid(),
+    pedido_id     uuid not null references pedidos(id) on delete cascade,
+    produto_id    uuid not null references produtos(id),
+    lote_id       uuid references lotes(id),               -- definido na separação (FEFO)
+    quantidade    numeric(10,3) not null check (quantidade &gt; 0),
+    preco_unitario numeric(10,2) not null,
+    subtotal      numeric(10,2) generated always as (quantidade * preco_unitario) stored
+);
+
+create table pedido_status_hist (
+    id         uuid primary key default gen_random_uuid(),
+    pedido_id  uuid not null references pedidos(id) on delete cascade,
+    status     status_pedido not null,
+    usuario_id uuid references perfis(id),
+    criado_em  timestamptz not null default now()
+);
+
+-- FK lógica de estoque_movimentos.pedido_id (criada após pedidos existir)
+alter table estoque_movimentos
+    add constraint fk_mov_pedido foreign key (pedido_id) references pedidos(id) on delete set null;
+alter table cliente_feedback
+    add constraint fk_feedback_pedido foreign key (pedido_id) references pedidos(id) on delete set null;
+
+-- ---------------------------------------------------------------------
+-- 9. CLUBE DE ASSINATURA  (HU010 / RF026-RF028) — vitrine + modelo
+-- ---------------------------------------------------------------------
+create table planos_assinatura (
+    id          uuid primary key default gen_random_uuid(),
+    nome        text not null,            -- Essencial, Intermediário, Premium
+    descricao   text,
+    preco_mensal numeric(10,2) not null,
+    beneficios  text[] not null default &#39;{}&#39;,
+    ativo       boolean not null default true
+);
+
+create table assinaturas (
+    id            uuid primary key default gen_random_uuid(),
+    cliente_id    uuid not null references clientes(id),
+    plano_id      uuid not null references planos_assinatura(id),
+    status        text not null default &#39;ativa&#39;,   -- ativa, pausada, cancelada
+    data_inicio   date not null default current_date,
+    proximo_ciclo date
+);
+
+-- ---------------------------------------------------------------------
+-- 10. CONFIGURAÇÕES DO NEGÓCIO  (HU022 / RF046)
+-- ---------------------------------------------------------------------
+create table config_negocio (
+    id                  int primary key default 1 check (id = 1),  -- singleton
+    nome_empresa        text not null default &#39;Charcutaria Mantovani&#39;,
+    whatsapp            text default &#39;5531991057351&#39;,
+    email               text default &#39;charcutariamantovani@gmail.com&#39;,
+    instagram           text default &#39;charcutariamantovani&#39;,
+    endereco            text default &#39;Bairro Prado, Belo Horizonte/MG&#39;,
+    link_cardapio       text,
+    alerta_validade_dias int[] not null default &#39;{30,15,1}&#39;,
+    pos_venda_dias      int not null default 5,
+    canais_notificacao  jsonb not null default &#39;{&quot;push&quot;:true,&quot;email&quot;:true,&quot;whatsapp&quot;:false}&#39;
+);
+
+-- ---------------------------------------------------------------------
+-- 11. FUNÇÕES E GATILHOS
+-- ---------------------------------------------------------------------
+-- Geração automática do código de lote no formato AAA.NNN (RN001):
+--   AAA = três últimos dígitos do ano; NNN = sequencial por produto/ano.
+create or replace function fn_gerar_codigo_lote() returns trigger as $$
+declare
+    v_ano int := extract(year from coalesce(new.data_abertura, current_date));
+    v_seq int;
+begin
+    if new.codigo is not null then
+        return new;
+    end if;
+    select coalesce(max(sequencial), 0) + 1 into v_seq
+      from lotes
+     where produto_id = new.produto_id and ano = v_ano;
+    new.ano        := v_ano;
+    new.sequencial := v_seq;
+    new.codigo     := lpad((v_ano % 1000)::text, 3, &#39;0&#39;) || &#39;.&#39; || lpad(v_seq::text, 3, &#39;0&#39;);
+    return new;
+end;
+$$ language plpgsql;
+
+create trigger trg_gerar_codigo_lote
+    before insert on lotes
+    for each row execute function fn_gerar_codigo_lote();
+
+-- Ao finalizar o lote (status &#39;em_estoque&#39;), inicializa o saldo disponível.
+create or replace function fn_lote_para_estoque() returns trigger as $$
+begin
+    if new.status = &#39;em_estoque&#39; and (old.status is distinct from &#39;em_estoque&#39;) then
+        new.peso_disponivel_kg := coalesce(new.peso_final_kg, 0);
+        insert into estoque_movimentos (lote_id, tipo, quantidade_kg, motivo, created_by)
+        values (new.id, &#39;entrada&#39;, coalesce(new.peso_final_kg, 0), &#39;Lote concluído&#39;, new.created_by);
+    end if;
+    return new;
+end;
+$$ language plpgsql;
+
+create trigger trg_lote_para_estoque
+    before update on lotes
+    for each row execute function fn_lote_para_estoque();
+
+-- ---------------------------------------------------------------------
+-- 12. VISÕES (suporte a estoque em tempo real e relatórios)
+-- ---------------------------------------------------------------------
+-- Estoque atual por lote, com semáforo de validade (HU005 / HU013)
+create view vw_estoque_atual as
+select l.id as lote_id, l.codigo, p.id as produto_id, p.nome as produto,
+       c.nome as categoria, l.peso_disponivel_kg, l.data_validade,
+       (l.data_validade - current_date) as dias_para_vencer,
+       case
+           when l.data_validade is null then &#39;sem_validade&#39;
+           when l.data_validade &lt; current_date then &#39;vencido&#39;
+           when l.data_validade - current_date &lt;= 7  then &#39;vermelho&#39;
+           when l.data_validade - current_date &lt;= 30 then &#39;amarelo&#39;
+           else &#39;verde&#39;
+       end as status_validade
+from lotes l
+join produtos p   on p.id = l.produto_id
+join categorias c on c.id = p.categoria_id
+where l.status = &#39;em_estoque&#39; and l.peso_disponivel_kg &gt; 0;
+
+-- Produção mensal consolidada por produto (HU004 / HU017)
+create view vw_producao_mensal as
+select p.id as produto_id, p.nome as produto, c.nome as categoria,
+       date_trunc(&#39;month&#39;, l.data_conclusao)::date as mes,
+       count(*) as num_lotes,
+       sum(l.peso_recebido_kg) as total_recebido_kg,
+       sum(l.peso_final_kg)    as total_produzido_kg,
+       sum(l.perda_total_kg)   as total_perdido_kg,
+       round(avg(l.perda_total_pct), 2) as perda_media_pct
+from lotes l
+join produtos p   on p.id = l.produto_id
+join categorias c on c.id = p.categoria_id
+where l.data_conclusao is not null
+group by p.id, p.nome, c.nome, date_trunc(&#39;month&#39;, l.data_conclusao);
+
+-- ---------------------------------------------------------------------
+-- 13. ÍNDICES (desempenho — RNF004)
+-- ---------------------------------------------------------------------
+create index idx_produtos_categoria   on produtos(categoria_id);
+create index idx_produtos_ativo       on produtos(ativo);
+create index idx_lotes_produto        on lotes(produto_id);
+create index idx_lotes_status         on lotes(status);
+create index idx_lotes_validade       on lotes(data_validade);
+create index idx_lote_etapas_lote     on lote_etapas(lote_id);
+create index idx_mov_lote             on estoque_movimentos(lote_id);
+create index idx_alertas_resolvido    on alertas(resolvido, severidade);
+create index idx_pedidos_status       on pedidos(status);
+create index idx_pedido_itens_pedido  on pedido_itens(pedido_id);
+create index idx_harmonizacoes_produto on harmonizacoes(produto_id);
+
+-- =====================================================================
+--  FIM DO MODELO FÍSICO
+-- =====================================================================
+</code></pre>
+
+<h1 id="estrutura-geral-diferentes-visões-síntese">Estrutura geral – diferentes visões (síntese)</h1>
+<ul>
+<li>História de usuário → visão do usuário (o “para quem” e “para quê”)</li>
+<li>Critério de aceite → validação testável de cada história</li>
+<li>Requisito Funcional (RF) → formalização técnica do que o sistema deve fazer</li>
+<li>Regra de Negócio (RN) → regra do domínio (charcutaria artesanal)</li>
+<li>Requisito Não Funcional (RNF) → atributos de qualidade do sistema (desempenho, segurança, usabilidade etc.)</li>
+<li>Modelo de Banco de Dados → estrutura física que sustenta e materializa as regras de negócio</li>
+</ul>
+<h1 id="anexos-bases-utilizadas-para-o-levantamento">Anexos – Bases utilizadas para o levantamento</h1>
+<ul>
+<li>Entrevista com o cliente Douglas Mantovani (Charcutaria Mantovani), realizada em 14/04/2026 no encontro síncrono da turma.</li>
+<li>Feedback do 2º encontro com o CEO (apresentação intermediária): alerta de produção, resumo mensal, cadastro que gera estoque e cardápio com ficha técnica e harmonização.</li>
+<li>Análise do perfil público da Charcutaria Mantovani no Instagram e do cardápio compartilhado via Linktree.</li>
+<li>Material de apoio da disciplina (Aula 02 – Engenharia de Requisitos; Aula 03 – Scrum; Aula 04 – Histórias de Usuário) — Profa. Erica Rodrigues de Oliveira.</li>
+<li>Scrum Guide (Schwaber &amp; Sutherland, 2020) — versão em português brasileiro.</li>
+<li>VALENTE, Marco Túlio. Engenharia de Software Moderna, capítulos 2 e 3.</li>
+<li>AGUIAR, Fábio; CAROLI, Paulo. Product Backlog Building.</li>
+</ul>
+
+
+</body></html>

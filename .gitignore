@@ -1,0 +1,30 @@
+# Pastas de trabalho / temporárias (não fazem parte do produto)
+_sqlcheck/
+_tools/
+_pdf_render/
+_secrets/
+
+# Segredos
+*.pat
+.pat
+*.secret
+
+# Artefatos intermediários do LaTeX
+docs/build/*.aux
+docs/build/*.log
+docs/build/*.out
+docs/build/*.toc
+
+# === Reforço (transferência para repositório) ===
+# Dependências e builds (regeneráveis)
+**/node_modules/
+**/.next/
+**/out/
+**/.vercel/
+# Ferramentas locais do agente
+.agents/
+*.log
+# Segredos de ambiente (o .env.example permanece versionado)
+**/.env
+**/.env.local
+**/.env.*.local
