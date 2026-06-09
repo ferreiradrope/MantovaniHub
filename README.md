@@ -5,7 +5,7 @@ artesanal por lote, com controle de perdas, validade, estoque, pedidos e relacio
 
 🔗 **No ar:** https://mantovanihub.vercel.app · 📍 Charcutaria artesanal — Belo Horizonte / MG
 
-> Projeto da UC **Modelagem de Software — 2026/1** · Centro Universitário Una · Profa. Erica R. de Oliveira.
+> Projeto da UC **Modelagem de Software — 2026/1** Profa. Erica R. de Oliveira.
 > Conduzido em **Scrum** com histórias de usuário (HUs), do levantamento de requisitos ao produto implantado.
 
 ---
