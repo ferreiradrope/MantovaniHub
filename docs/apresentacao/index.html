@@ -33,7 +33,10 @@ img,video,canvas,svg{max-width:100%;max-height:100%;}
   .deck-stage{position:static;width:auto;height:auto;transform:none!important;background:none;}
   .slide{position:relative;display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;width:1920px;height:1080px;break-after:page;page-break-after:always;}
   .slide:last-child{break-after:auto;page-break-after:auto;}
+  .slide .r{opacity:1!important;transform:none!important;}
+  .grain{display:none!important;} /* opacity .045 — imperceptível impresso, mas pesa ~10MB rasterizado por slide */
   .deck-controls{display:none!important;}
+  @page{size:1920px 1080px;margin:0;}
 }
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important;}}
 
@@ -148,6 +151,29 @@ img,video,canvas,svg{max-width:100%;max-height:100%;}
 .end h2{font-family:var(--display);font-weight:600;font-size:150px;line-height:1;color:var(--bordo-dp);}
 .end p{font-family:var(--display);font-style:italic;font-size:38px;color:var(--ink-soft);margin-top:22px;}
 .end .who{font-size:24px;letter-spacing:.26em;text-transform:uppercase;color:var(--bordo);margin-top:40px;font-weight:600;}
+
+/* === SLIDE: acesso ao painel (passos + credenciais) === */
+.access{position:absolute;left:108px;right:108px;top:372px;bottom:128px;display:grid;grid-template-columns:0.92fr 1.08fr;gap:84px;align-items:center;}
+.steps{list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:30px;}
+.steps li{position:relative;padding-left:76px;min-height:52px;display:flex;align-items:center;font-size:29px;line-height:1.34;color:var(--ink);counter-increment:s;}
+.steps li::before{content:counter(s);position:absolute;left:0;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:var(--bordo);color:var(--paper);font-family:var(--display);font-weight:600;font-size:27px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(94,18,26,.22);}
+.steps li b{color:var(--bordo);font-weight:700;}
+.creds{display:flex;flex-direction:column;gap:28px;}
+.cred{background:rgba(255,255,255,.55);border:1.5px solid var(--line);border-radius:22px;padding:30px 42px;}
+.cred .role{font-size:19px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:14px;}
+.cred .role::before{content:"";width:32px;height:2px;background:var(--gold);}
+.cred .row{display:flex;align-items:baseline;gap:18px;margin-top:12px;}
+.cred .lab{font-size:18px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);min-width:96px;}
+.cred .val{font-family:var(--display);font-weight:600;color:var(--bordo);font-size:30px;letter-spacing:.01em;}
+.access-note{position:absolute;left:108px;right:108px;bottom:108px;font-size:21px;font-style:italic;font-family:var(--display);color:var(--ink-faint);}
+
+/* === SLIDE: integrantes (roster Nome — RA, duas colunas) === */
+.roster{position:absolute;left:108px;right:108px;top:352px;bottom:128px;list-style:none;
+  display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;gap:4px 100px;counter-reset:m;}
+.roster li{display:flex;align-items:center;gap:20px;padding:6px 4px;border-bottom:1px solid var(--line);counter-increment:m;}
+.roster li::before{content:counter(m,decimal-leading-zero);font-family:var(--display);font-weight:600;font-size:25px;color:var(--gold);min-width:46px;}
+.roster .nm{font-size:28px;font-weight:500;color:var(--ink);}
+.roster .ra{margin-left:auto;font-family:var(--display);font-weight:600;font-size:23px;color:var(--ink-soft);letter-spacing:.02em;white-space:nowrap;}
 
 /* === UI fora do palco (página + dica) === */
 .deck-controls{display:flex;align-items:center;gap:16px;font-family:var(--body);font-size:14px;color:#7c5a3e;background:rgba(246,239,225,.85);border:1px solid rgba(138,28,36,.25);padding:7px 16px;border-radius:999px;backdrop-filter:blur(4px);}
@@ -400,7 +426,62 @@ body.editing .deck-stage{outline:3px dashed rgba(138,28,36,.4);outline-offset:-3
     <div class="foot r d6"><span class="num">16</span><span class="ln"></span><span class="wm">Mantovani<b>Hub</b></span></div>
   </section>
 
-  <!-- ===================== 17 · FINAL ===================== -->
+  <!-- ===================== 17 · ACESSO AO PAINEL ADMIN ===================== -->
+  <section class="slide">
+    <div class="grain"></div><div class="edge"></div>
+    <div class="tag r"><span class="ln"></span>Acesso · Painel administrativo</div>
+    <div class="head"><h2 class="s-title r d1">Como acessar o <em>painel</em></h2><p class="lead r d2">O cardápio é aberto a todos. O painel administrativo abre com login — use uma das contas de demonstração abaixo.</p></div>
+    <div class="access">
+      <ol class="steps r d3">
+        <li><span>Acesse <b>mantovanihub.vercel.app</b> no navegador</span></li>
+        <li><span>Toque em <b>Entrar</b> ou abra <b>/painel</b></span></li>
+        <li><span>Informe o <b>e-mail</b> e a <b>senha</b> de uma das contas</span></li>
+        <li><span>Pronto — o painel administrativo abre</span></li>
+      </ol>
+      <div class="creds-wrap">
+        <div class="creds">
+          <div class="cred r d4">
+            <div class="role">Administrador</div>
+            <div class="row"><span class="lab">Login</span><span class="val">douglas@mantovani.com</span></div>
+            <div class="row"><span class="lab">Senha</span><span class="val">Mantovani@2026</span></div>
+          </div>
+          <div class="cred r d5">
+            <div class="role">Gestora</div>
+            <div class="row"><span class="lab">Login</span><span class="val">gestora@mantovani.com</span></div>
+            <div class="row"><span class="lab">Senha</span><span class="val">Mantovani@2026</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="access-note r d6">Contas de demonstração, para avaliação do sistema.</div>
+    <div class="foot r d6"><span class="num">17</span><span class="ln"></span><span class="wm">Mantovani<b>Hub</b></span></div>
+  </section>
+
+  <!-- ===================== 18 · INTEGRANTES ===================== -->
+  <section class="slide">
+    <div class="grain"></div><div class="edge"></div>
+    <div class="tag r"><span class="ln"></span>Equipe</div>
+    <div class="head"><h2 class="s-title r d1">Quem <em>construiu</em></h2><p class="lead r d2">Integrantes do grupo — nome e RA.</p></div>
+    <ol class="roster r d3">
+      <li><span class="nm">Breno Gabriel da Silva</span><span class="ra">942523034</span></li>
+      <li><span class="nm">Bruno Henrique Silva dos Santos</span><span class="ra">825166491</span></li>
+      <li><span class="nm">Caio Rafael da Encarnação Freitas</span><span class="ra">12724239863</span></li>
+      <li><span class="nm">Enzo Marinho Machado Vieira</span><span class="ra">12625125047</span></li>
+      <li><span class="nm">Felipe Barbosa da Silva</span><span class="ra">824226505</span></li>
+      <li><span class="nm">Gabriel Correia Proença</span><span class="ra">823154480</span></li>
+      <li><span class="nm">Gabriel Maciel Cavalcante</span><span class="ra">82523117</span></li>
+      <li><span class="nm">Isaías Gomes Dally Junior</span><span class="ra">12725138051</span></li>
+      <li><span class="nm">Mariana Albuquerque da Cruz</span><span class="ra">942519415</span></li>
+      <li><span class="nm">Naegeli Raiane Guerra</span><span class="ra">942515910</span></li>
+      <li><span class="nm">Pedro Henrique Esgote Santana</span><span class="ra">324271342</span></li>
+      <li><span class="nm">Pedro Henrique Ferreira da Silva</span><span class="ra">1262510629</span></li>
+      <li><span class="nm">Tino Marcos Santos da Paz</span><span class="ra">12724136840</span></li>
+      <li><span class="nm">Vinícius Anselmo</span><span class="ra">10722129086</span></li>
+    </ol>
+    <div class="foot r d6"><span class="num">18</span><span class="ln"></span><span class="wm">Mantovani<b>Hub</b></span></div>
+  </section>
+
+  <!-- ===================== 19 · FINAL ===================== -->
   <section class="slide end">
     <div class="grain"></div><div class="edge"></div>
     <div class="wrap">
@@ -415,7 +496,7 @@ body.editing .deck-stage{outline:3px dashed rgba(138,28,36,.4);outline-offset:-3
 </div>
 
 <!-- Indicador de página + dica (fora do palco) -->
-<div class="deck-controls"><b id="pageNum">01 / 17</b><span class="hint">← → navegar · F tela cheia · E editar</span></div>
+<div class="deck-controls"><b id="pageNum">01 / 19</b><span class="hint">← → navegar · F tela cheia · E editar</span></div>
 
 <script>
 /* ===========================================================
