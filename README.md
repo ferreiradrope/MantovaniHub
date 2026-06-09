@@ -5,6 +5,8 @@ artesanal por lote, com controle de perdas, validade, estoque, pedidos e relacio
 
 🔗 **No ar:** https://mantovanihub.vercel.app · 📍 Charcutaria artesanal — Belo Horizonte / MG
 
+🎬 **Apresentação do produto:** [versão online](https://apresentacao-sepia.vercel.app) · [PDF dos slides](docs/apresentacao/MantovaniHub-Apresentacao.pdf)
+
 > Projeto da UC **Modelagem de Software — 2026/1** Profa. Erica R. de Oliveira.
 > Conduzido em **Scrum** com histórias de usuário (HUs), do levantamento de requisitos ao produto implantado.
 
@@ -59,7 +61,8 @@ MantovaniHub/
 │   ├── schema.sql        # Modelo físico (22 tabelas, views, gatilhos)
 │   ├── seed.sql          # Cardápio real + dados de demonstração
 │   ├── rls.sql           # Políticas de segurança (RLS)
-│   └── er-diagram.mmd    # Diagrama entidade-relacionamento (Mermaid)
+│   ├── er-diagram.mmd    # Diagrama entidade-relacionamento (Mermaid)
+│   └── apresentacao/     # Apresentação final do produto (slides HTML + PDF)
 └── web/
     ├── src/app/          # Rotas: landing, /cardapio, /painel (admin)
     ├── src/components/    # UI, painel, cardápio, identidade visual
@@ -73,6 +76,7 @@ MantovaniHub/
 | [📘 Requisitos v1](docs/Documento_Requisitos_Charcutaria_Mantovani_v1.pdf) | Levantamento inicial (Scrum + HUs) — Entrega 1 / A3 |
 | [📗 Requisitos v2](docs/Documento_Requisitos_Charcutaria_Mantovani_v2.pdf) | Versão revisada com o feedback do cliente — 20+ HUs, regras de negócio, modelo de dados e script SQL |
 | [🎞️ Protótipo de baixa fidelidade](docs/Apresentacao_Prototipo_Baixa_Fidelidade.pdf) | Apresentação técnica com os wireframes das telas |
+| [🎬 Apresentação do produto](docs/apresentacao/MantovaniHub-Apresentacao.pdf) | Slides da apresentação final (PDF, 17 telas) · [versão online](https://apresentacao-sepia.vercel.app) |
 
 ## 🗄️ Banco de dados
 
