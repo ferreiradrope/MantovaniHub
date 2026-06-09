@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MantovaniHub — Apresentação</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ===========================================================
    THEME — Editorial Claro (creme + bordô + dourado, Fraunces)
@@ -15,7 +15,7 @@
   --paper:#f6efe1; --paper-2:#efe5d1; --bordo:#8a1c24; --bordo-dp:#5e121a;
   --gold:#b8862e; --gold-l:#d4a949; --ink:#2b1d17; --ink-soft:#7a6453; --ink-faint:#9c8870;
   --line:rgba(138,28,36,.22); --stage-bg:#e3d2b2; --slide-bg:#f6efe1;
-  --display:'Fraunces',serif; --body:'Hanken Grotesk',sans-serif;
+  --display:'Playfair Display',serif; --body:'Hanken Grotesk',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 
@@ -66,7 +66,7 @@ img,video,canvas,svg{max-width:100%;max-height:100%;}
 /* === HEAD de conteúdo === */
 .head{position:absolute;left:108px;top:142px;right:108px;}
 .s-title{font-family:var(--display);font-weight:600;font-size:78px;line-height:1.0;letter-spacing:-.02em;color:var(--bordo-dp);}
-.s-title em{font-style:italic;color:var(--gold);font-weight:500;}
+.s-title em{font-style:normal;color:var(--gold);font-weight:600;}
 .lead{font-size:28px;line-height:1.4;color:var(--ink-soft);margin-top:16px;max-width:980px;}
 
 /* === COLUNAS texto | mídia === */
@@ -79,7 +79,7 @@ img,video,canvas,svg{max-width:100%;max-height:100%;}
 .note{margin-top:14px;font-size:23px;color:var(--ink-faint);font-style:italic;font-family:var(--display);}
 
 /* duas colunas de texto (slide de visão geral) */
-.duo{position:absolute;left:108px;right:108px;top:296px;bottom:128px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:stretch;}
+.duo{position:absolute;left:108px;right:108px;top:362px;bottom:122px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:stretch;}
 .card{background:rgba(255,255,255,.5);border:1.5px solid var(--line);border-radius:20px;padding:46px 48px;display:flex;flex-direction:column;}
 .card h3{font-family:var(--display);font-weight:600;font-size:42px;color:var(--bordo);margin-bottom:8px;}
 .card .k{font-size:20px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
@@ -111,8 +111,8 @@ img,video,canvas,svg{max-width:100%;max-height:100%;}
 .title .wrap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 128px;}
 .title .kick{display:flex;align-items:center;gap:20px;font-size:23px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--bordo);}
 .title .kick .ln{height:1.5px;width:72px;background:var(--gold);}
-.title h1{font-family:var(--display);font-weight:900;font-size:186px;line-height:.92;letter-spacing:-.025em;color:var(--bordo-dp);margin:28px 0 0;}
-.title h1 em{font-style:italic;font-weight:500;color:var(--gold);}
+.title h1{font-family:var(--display);font-weight:700;font-size:178px;line-height:.96;letter-spacing:-.015em;color:var(--bordo-dp);margin:28px 0 0;}
+.title h1 em{font-style:normal;font-weight:700;color:var(--gold);}
 .title .sub{max-width:1060px;font-size:37px;line-height:1.42;color:var(--ink-soft);margin-top:26px;}
 .title .chips{display:flex;gap:12px;margin-top:34px;}
 .title .chips span{font-size:21px;font-weight:600;color:var(--bordo);border:1.5px solid var(--line);border-radius:999px;padding:9px 20px;background:rgba(255,255,255,.4);}
@@ -125,19 +125,19 @@ img,video,canvas,svg{max-width:100%;max-height:100%;}
 .divider .lbl{font-size:26px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:20px;}
 .divider .lbl .n{font-family:var(--display);font-weight:600;font-size:30px;color:var(--bordo);}
 .stmt{font-family:var(--display);font-weight:600;font-size:148px;line-height:.98;letter-spacing:-.025em;color:var(--bordo-dp);margin-top:24px;}
-.stmt em{font-style:italic;color:var(--gold);font-weight:500;}
+.stmt em{font-style:normal;color:var(--gold);font-weight:600;}
 .stmt-sub{font-size:32px;color:var(--ink-soft);margin-top:30px;max-width:1180px;line-height:1.4;}
 
 /* === SLIDE "NO AR" (QR) === */
 .live .wrap{position:absolute;inset:0;display:grid;grid-template-columns:1.2fr 0.8fr;gap:80px;align-items:center;padding:0 128px;}
 .live h2{font-family:var(--display);font-weight:600;font-size:104px;line-height:.98;color:var(--bordo-dp);}
-.live h2 em{font-style:italic;color:var(--gold);}
+.live h2 em{font-style:normal;color:var(--gold);}
 .live p{font-size:31px;line-height:1.45;color:var(--ink-soft);margin-top:24px;max-width:760px;}
 .live .url{display:inline-flex;align-items:center;gap:14px;margin-top:30px;font-family:var(--display);font-weight:600;font-size:38px;color:var(--bordo);border-bottom:2px solid var(--gold);padding-bottom:6px;}
 .live .stack{font-size:22px;color:var(--ink-faint);margin-top:34px;letter-spacing:.02em;}
-.qr{justify-self:center;width:420px;height:420px;border-radius:28px;background:#fff;border:1.5px solid var(--line);box-shadow:0 24px 60px rgba(60,20,12,.2);padding:26px;display:flex;flex-direction:column;align-items:center;}
-.qr img{width:100%;height:100%;object-fit:contain;}
-.qr .cap{margin-top:14px;font-size:21px;font-weight:600;color:var(--bordo);letter-spacing:.04em;}
+.qr{justify-self:center;width:430px;border-radius:28px;background:#fff;border:1.5px solid var(--line);box-shadow:0 24px 60px rgba(60,20,12,.2);padding:28px 28px 24px;display:flex;flex-direction:column;align-items:center;}
+.qr img{width:100%;height:auto;object-fit:contain;display:block;}
+.qr .cap{margin-top:20px;font-size:21px;font-weight:600;color:var(--bordo);letter-spacing:.04em;}
 
 /* === SLIDE FINAL === */
 .end{display:flex;align-items:center;justify-content:center;text-align:center;}
