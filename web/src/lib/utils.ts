@@ -31,6 +31,17 @@ export function formatDate(value: string | Date | null | undefined): string {
   return new Intl.DateTimeFormat("pt-BR", { dateStyle: "short", timeZone: "America/Sao_Paulo" }).format(d);
 }
 
+/** Formata uma data ISO como dd/mm/aaaa às HH:mm. */
+export function formatDateTime(value: string | Date | null | undefined): string {
+  if (!value) return "—";
+  const d = typeof value === "string" ? new Date(value) : value;
+  return new Intl.DateTimeFormat("pt-BR", {
+    dateStyle: "short",
+    timeStyle: "short",
+    timeZone: "America/Sao_Paulo",
+  }).format(d);
+}
+
 /** Dias entre hoje e uma data (positivo = futuro). */
 export function daysUntil(value: string | Date | null | undefined): number | null {
   if (!value) return null;

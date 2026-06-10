@@ -1,11 +1,12 @@
 "use client";
 
 import { useTransition } from "react";
-import { Truck, Store, User } from "lucide-react";
+import { Truck, Store, User, Eye } from "lucide-react";
 import type { Pedido, StatusPedido } from "@/lib/types";
 import { STATUS_PEDIDO_LABEL } from "@/lib/types";
 import { avancarPedido } from "@/lib/actions/pedidos";
 import { formatBRL } from "@/lib/utils";
+import { PedidoDetalhe } from "@/components/painel/pedido-detalhe";
 
 const COLUNAS: StatusPedido[] = ["recebido", "separacao", "pronto", "entregue"];
 const TODOS: StatusPedido[] = ["recebido", "separacao", "pronto", "entregue", "cancelado"];
@@ -40,6 +41,12 @@ export function Kanban({ pedidos }: { pedidos: Pedido[] }) {
                     {p.tipo_entrega === "motoboy" ? "Entrega" : "Retirada"}
                     <span>· {p.itens?.length ?? 0} itens</span>
                   </div>
+                  <PedidoDetalhe
+                    pedido={p}
+                    className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-lg border border-areia-200 py-1.5 text-xs font-semibold text-vinho-700 transition-colors hover:border-vinho-600 hover:bg-vinho-600/8"
+                  >
+                    <Eye size={13} /> Ver detalhes
+                  </PedidoDetalhe>
                   <select
                     defaultValue={p.status}
                     disabled={pending}

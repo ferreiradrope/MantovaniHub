@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Package, TrendingDown, Boxes, Wallet } from "lucide-react";
+import { Package, TrendingDown, Boxes, Wallet, ChevronRight } from "lucide-react";
 import { getProducaoMensal, getPedidos } from "@/lib/queries";
 import { PageHeader } from "@/components/ui/page-header";
 import { StatCard } from "@/components/ui/stat-card";
 import { EmptyState } from "@/components/ui/empty-state";
 import { ProducaoChart } from "@/components/painel/producao-chart";
+import { PedidoDetalhe } from "@/components/painel/pedido-detalhe";
 import { formatBRL, formatKg, formatDate, cn } from "@/lib/utils";
 import { STATUS_PEDIDO_LABEL } from "@/lib/types";
 
@@ -124,24 +125,31 @@ export default async function RelatoriosPage() {
               </div>
               <ul className="divide-y divide-areia-200">
                 {pedidosOrdenados.map((p) => (
-                  <li key={p.id} className="flex items-center gap-3 px-4 py-3 sm:px-5">
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate font-medium text-cafe">
-                        Pedido #{p.numero} · {p.cliente?.nome ?? "Cliente"}
-                      </p>
-                      <p className="text-xs text-cafe-claro">{formatDate(p.criado_em)}</p>
-                    </div>
-                    <div className="flex shrink-0 items-center gap-3">
-                      <span
-                        className={cn(
-                          "rounded-full px-2 py-0.5 text-xs font-semibold",
-                          STATUS_TONE[p.status] ?? "bg-areia-200 text-cafe-claro",
-                        )}
-                      >
-                        {STATUS_PEDIDO_LABEL[p.status]}
-                      </span>
-                      <span className="lote-codigo w-24 text-right font-semibold text-cafe">{formatBRL(Number(p.valor_total))}</span>
-                    </div>
+                  <li key={p.id}>
+                    <PedidoDetalhe
+                      pedido={p}
+                      title={`Ver detalhes do pedido #${p.numero}`}
+                      className="flex w-full items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-creme/60 sm:px-5"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate font-medium text-cafe">
+                          Pedido #{p.numero} · {p.cliente?.nome ?? "Cliente"}
+                        </p>
+                        <p className="text-xs text-cafe-claro">{formatDate(p.criado_em)}</p>
+                      </div>
+                      <div className="flex shrink-0 items-center gap-3">
+                        <span
+                          className={cn(
+                            "rounded-full px-2 py-0.5 text-xs font-semibold",
+                            STATUS_TONE[p.status] ?? "bg-areia-200 text-cafe-claro",
+                          )}
+                        >
+                          {STATUS_PEDIDO_LABEL[p.status]}
+                        </span>
+                        <span className="lote-codigo w-24 text-right font-semibold text-cafe">{formatBRL(Number(p.valor_total))}</span>
+                        <ChevronRight size={16} className="text-cafe-300" />
+                      </div>
+                    </PedidoDetalhe>
                   </li>
                 ))}
               </ul>

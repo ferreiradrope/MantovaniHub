@@ -120,6 +120,7 @@ export interface Pedido {
   canal: CanalPedido;
   status: StatusPedido;
   tipo_entrega: TipoEntrega;
+  endereco_entrega: string | null;
   valor_produtos: number;
   valor_entrega: number;
   valor_total: number;
@@ -191,4 +192,21 @@ export const STATUS_PEDIDO_LABEL: Record<StatusPedido, string> = {
   pronto: "Pronto",
   entregue: "Entregue",
   cancelado: "Cancelado",
+};
+
+export const CANAL_PEDIDO_LABEL: Record<CanalPedido, string> = {
+  site: "Site",
+  whatsapp: "WhatsApp",
+  balcao: "Balcão",
+};
+
+export const TIPO_ENTREGA_LABEL: Record<TipoEntrega, string> = {
+  motoboy: "Entrega",
+  retirada: "Retirada",
+};
+
+export const FORMA_PAGAMENTO_LABEL: Record<FormaPagamento, string> = {
+  pix: "Pix",
+  cartao: "Cartão",
+  dinheiro: "Dinheiro",
 };
