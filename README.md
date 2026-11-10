@@ -5,7 +5,7 @@ artesanal por lote, com controle de perdas, validade, estoque, pedidos e relacio
 
 🔗 **No ar:** https://mantovanihub.vercel.app · 📍 Charcutaria artesanal — Belo Horizonte / MG
 
-🎬 **Apresentação do produto:** [versão online](https://apresentacao-sepia.vercel.app) · [PDF dos slides](docs/apresentacao/MantovaniHub-Apresentacao.pdf)
+🎬 **Apresentação do produto:** [PDF dos slides](docs/apresentacao/MantovaniHub-Apresentacao.pdf)
 
 > Projeto da UC **Modelagem de Software — 2026/1** Profa. Erica R. de Oliveira.
 > Conduzido em **Scrum** com histórias de usuário (HUs), do levantamento de requisitos ao produto implantado.
@@ -76,7 +76,7 @@ MantovaniHub/
 | [📘 Requisitos v1](docs/Documento_Requisitos_Charcutaria_Mantovani_v1.pdf) | Levantamento inicial (Scrum + HUs) — Entrega 1 / A3 |
 | [📗 Requisitos v2](docs/Documento_Requisitos_Charcutaria_Mantovani_v2.pdf) | Versão revisada com o feedback do cliente — 20+ HUs, regras de negócio, modelo de dados e script SQL |
 | [🎞️ Protótipo de baixa fidelidade](docs/Apresentacao_Prototipo_Baixa_Fidelidade.pdf) | Apresentação técnica com os wireframes das telas |
-| [🎬 Apresentação do produto](docs/apresentacao/MantovaniHub-Apresentacao.pdf) | Slides da apresentação final (PDF, 17 telas) · [versão online](https://apresentacao-sepia.vercel.app) |
+| [🎬 Apresentação do produto](docs/apresentacao/MantovaniHub-Apresentacao.pdf) | Slides da apresentação final (PDF, 17 telas) |
 
 ## 🗄️ Banco de dados
 
@@ -111,36 +111,22 @@ Variáveis de ambiente (ver `web/.env.example`):
 O painel administrativo é restrito por autenticação, com perfis de **administrador** e **gestora**.
 As **credenciais de demonstração** podem ser solicitadas à equipe para fins de avaliação.
 
-## 👥 Integrantes (Nome - RA)
+## 👥 Integrantes
 
-1 . Breno Gabriel da Silva - 942523034
-
-2 . Bruno Henrique Silva dos Santos - 825166491
-
-3 . Caio Rafael da Encarnação Freitas - 12724239863
-
-4 . Enzo Marinho Machado Vieira - 12625125047
-
-5 . Felipe Barbosa da Silva - 824226505
-
-6 . Gabriel Correia Proença - 823154480
-
-7 . Gabriel Maciel Cavalcante - 82523117
-
-8 . Isaías Gomes Dally Junior - 12725138051
-
-9 . Mariana Albuquerque da Cruz - 942519415
-
-10 . Naegeli Raiane Guerra - 942515910
-
-11 . Pedro Henrique Esgote Santana - 324271342
-
-12 . Pedro Henrique Ferreira da Silva - 1262510629
-
-13 . Tino Marcos Santos da Paz - 12724136840
-
-14 . Vinícius Anselmo - 10722129086
-
+1 . Breno Gabriel da Silva
+2 . Bruno Henrique Silva dos Santos
+3 . Caio Rafael da Encarnação Freitas
+4 . Enzo Marinho Machado Vieira
+5 . Felipe Barbosa da Silva
+6 . Gabriel Correia Proença
+7 . Gabriel Maciel Cavalcante
+8 . Isaías Gomes Dally Junior
+9 . Mariana Albuquerque da Cruz
+10 . Naegeli Raiane Guerra
+11 . Pedro Henrique Esgote Santana
+12 . Pedro Henrique Ferreira da Silva
+13 . Tino Marcos Santos da Paz
+14 . Vinícius Anselmo
 ---
 
 <p align="center"><em>“Charcutaria é paciência que vira sabor.”</em><br>
